@@ -1,0 +1,587 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Buyukbang Panel v1.4.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-05 14:22+0200\n"
+"PO-Revision-Date: 2014-02-01 16:50+0200\n"
+"Last-Translator: Buyukbang <buyukbang@gmail.com>\n"
+"Language-Team: Buyukbang\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"Plural-Forms: nplurals=1; plural= (1 != 1);\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Language: tr_TR\n"
+"X-Generator: Poedit 1.6.3\n"
+
+msgid "Only infoBar and EPG info"
+msgstr "Sadece bilgi çubuğu ve EPG detayında"
+
+msgid "All EPG queries"
+msgstr "Tüm EPG sorgulamalarını"
+
+msgid "Disable"
+msgstr "Kapalı"
+
+msgid "At startup <Changes requires restart>"
+msgstr "Açılışta <Yeniden başlatma gerektirir>"
+
+msgid "In realtime <Uses more CPU>"
+msgstr "Eş zamanlı <Daha fazla CPU kullanır>"
+
+msgid ""
+"Buyukbang Panel\n"
+"\n"
+"Another EPG copy operation is in progress. Please wait..."
+msgstr ""
+"Buyukbang Panel\n"
+"\n"
+"Şu an başka bir EPG kopyalama işlemi sürüyor. Lütfen bekleyiniz..."
+
+msgid "Another EPG copy operation is in progress. EPG copy will not start."
+msgstr ""
+"Şu an başka bir EPG kopyalama işlemi sürüyor. Kopyalama başlatılmayacak."
+
+msgid "%s copied"
+msgstr "%s kopyalandı"
+
+msgid "Copy failed for %s"
+msgstr "%s için kopyalama başarısız"
+
+msgid "No EPG data available for %s"
+msgstr "%s için EPG bilgisi mevcut değil"
+
+msgid "Writing %s"
+msgstr "%s yazılıyor"
+
+msgid "%s write failed"
+msgstr "%s yazımı başarısız"
+
+msgid "Loading %s"
+msgstr "%s yükleniyor"
+
+msgid "%s loaded"
+msgstr "%s yüklendi"
+
+msgid "%s load failed"
+msgstr "%s yüklemesi başarısız"
+
+msgid "Configuration"
+msgstr "Ayarlar"
+
+msgid "Copy EPG periodically"
+msgstr "Periyodik EPG kopyalama"
+
+msgid "Interval (>=2 min)"
+msgstr "Zaman aralığı (>=2 min)"
+
+msgid "Copy EPG at a scheduled time"
+msgstr "Zamanlanmış EPG kopyalama"
+
+msgid "Scheduled EPG copy time"
+msgstr "Zamanlanmış EPG kopyalama saati"
+
+msgid "When restart needed"
+msgstr "Yeniden başlatma gerektiğinde"
+
+msgid "Scheduler"
+msgstr "Zamanlayıcı"
+
+msgid "Scheduled operation"
+msgstr "Zamanlanan işlem"
+
+msgid "Time"
+msgstr "Saat"
+
+msgid "Monday"
+msgstr "Pazartesi"
+
+msgid "Tuesday"
+msgstr "Salı"
+
+msgid "Wednesday"
+msgstr "Çarşamba"
+
+msgid "Thursday"
+msgstr "Perşembe"
+
+msgid "Friday"
+msgstr "Cuma"
+
+msgid "Saturday"
+msgstr "Cumartesi"
+
+msgid "Sunday"
+msgstr "Pazar"
+
+msgid "No weekday selected, scheduled operation is disabled"
+msgstr "Gün seçimi yapılmamış, zamanlanmış işlem iptal edildi"
+
+msgid "Scheduled operation executed"
+msgstr "Zamanlanmış işlem çalıştırıldı"
+
+msgid "Shutdown"
+msgstr "Cihazı kapat"
+
+msgid "Reboot"
+msgstr "Yeniden başlat"
+
+msgid "Restart"
+msgstr "Yeniden başlat"
+
+msgid "Restart GUI"
+msgstr "Arayüzü yeniden başlat"
+
+msgid "Standby"
+msgstr "Hazırda beklet"
+
+msgid "Startup copy delay (>=2 min)"
+msgstr "Başlangıçta kopyalama gecikmesi (>=2 min)"
+
+msgid "Force CrossEPG patch usage"
+msgstr "CrossEPG EPG yaması kullanımını zorla"
+
+msgid "Copy EPG"
+msgstr "EPG kopyala"
+
+msgid "Link EPG"
+msgstr "EPG linkle"
+
+msgid "Read EPG bouquet"
+msgstr "EPG buket okuma"
+
+msgid "Filter EPG"
+msgstr "EPG filtrele"
+
+msgid "EPG titles"
+msgstr "EPG başlıkları"
+
+msgid "Language"
+msgstr "Dil"
+
+msgid "Fix EPG encoding"
+msgstr "EPG kodlamasını düzelt"
+
+msgid "Encoding"
+msgstr "Kodlama"
+
+msgid "Hide zap errors"
+msgstr "Zap hatalarını gizle"
+
+msgid "Show in extensions"
+msgstr "Uzantılar menüsünde göster"
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Ok"
+msgstr "Tamam"
+
+msgid "Show Log"
+msgstr "Logu göster"
+
+msgid "Manual Copy"
+msgstr "Elle kopyala"
+
+msgid ""
+"Buyukbang Panel\n"
+"\n"
+"Restart needed to apply the new settings.\n"
+"\n"
+"Do you want to restart now?"
+msgstr ""
+"Buyukbang Panel\n"
+"\n"
+"Ayarların uygulanması için yeniden başlatma gereklidir.\n"
+"\n"
+"Yeniden başlatmak istiyor musunuz?"
+
+msgid ""
+"Buyukbang Panel\n"
+"\n"
+"Updating encoding settings requires internet connection to query Kingofsat "
+"and this may take a few minutes.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+"Buyukbang Panel\n"
+"\n"
+"Kodlama ayarlarının güncellenmesi Kingofsat'ın sorgulanması için internet "
+"bağlantısı gerektirir ve bu birkaç dakika sürebilir.\n"
+"\n"
+"Devam etmek istiyor musunuz?"
+
+msgid "Restart now?"
+msgstr "Yeniden başlatma onayı"
+
+msgid ""
+"Buyukbang Panel\n"
+"\n"
+"Restart needed to load the EPG data.\n"
+"\n"
+"Do you want to restart now?"
+msgstr ""
+"Buyukbang Panel\n"
+"\n"
+"EPG yüklemesi için yeniden başlatma gereklidir.\n"
+"\n"
+"Yeniden başlatmak istiyor musunuz?"
+
+msgid "Clear"
+msgstr "Temizle"
+
+msgid "Save"
+msgstr "Kaydet"
+
+msgid "Miscellaneous tools for Enigma2"
+msgstr "Enigma2 için çeşitli araçlar"
+
+msgid "Manual EPG copy started"
+msgstr "Elle EPG kopyalama başladı"
+
+msgid "Scheduled EPG copy started"
+msgstr "Zamanlanmış EPG kopyalama kopyalama başladı"
+
+msgid "Periodic EPG copy started"
+msgstr "Periyodik EPG kopyalama başladı"
+
+msgid "Manual EPG copy completed"
+msgstr "Elle EPG kopyalama tamamlandı"
+
+msgid "Scheduled EPG copy completed"
+msgstr "Zamanlanmış EPG kopyalama tamamlandı"
+
+msgid "Scheduled EPG copy time is set to %s"
+msgstr "Zamanlanmış EPG kopyalama saati %s yapıldı"
+
+msgid "Scheduled operation time is set to %s"
+msgstr "Zamanlayıcı saati %s yapıldı"
+
+msgid "Periodic EPG copy completed"
+msgstr "Periyodik EPG kopyalama tamamlandı"
+
+msgid "Previous restart detected. Periodic EPG copy time recalculated."
+msgstr ""
+"Yeniden başlatma saptandı. Periyodik EPG kopyalama saati yeniden hesaplandı."
+
+msgid "Periodic EPG copy time is set to %s"
+msgstr "Periyodik EPG kopyalama saati %s yapıldı"
+
+msgid "Buyukbang Panel started"
+msgstr "Buyukbang Panel başladı"
+
+msgid "PLi EPG patch detected"
+msgstr "PLi EPG yaması saptandı"
+
+msgid "PLi EPG patch not present on this image"
+msgstr "PLi EPG yaması bu imajda bulunmamaktadır"
+
+msgid "Oudeis EPG patch detected"
+msgstr "Oudeis EPG yaması saptandı"
+
+msgid "Oudeis EPG patch not present on this image"
+msgstr "Oudeis EPG yaması bu imajda bulunmamaktadır"
+
+msgid "CrossEPG patch detected"
+msgstr "CrossEPG EPG yaması saptandı"
+
+msgid "CrossEPG patch not present on this image"
+msgstr "CrossEPG EPG yaması bu imajda bulunmamaktadır"
+
+msgid "Thread support detected"
+msgstr "Thread desteği saptandı"
+
+msgid "Thread support not present on this image"
+msgstr "Thread desteği bu imajda bulunmamaktadır"
+
+msgid "Fixing EPG encoding failed"
+msgstr "EPG kodlamasını düzeltme işlemi başarısız"
+
+msgid "Stop"
+msgstr "Dur"
+
+msgid "Failed to update extensions menu"
+msgstr "Uzantılar menüsünün güncellenmesi başarısız"
+
+msgid "Updating EPG encoding setting failed"
+msgstr "EPG kodlaması ayarının güncellenmesi başarısız"
+
+msgid "Bouquet named EPG not found, EPG copy aborted"
+msgstr "EPG isimli buket bulunamadı, EPG kopyalama iptal edildi"
+
+msgid "Settings saved"
+msgstr "Ayarlar kaydedildi"
+
+msgid "Startup to standby"
+msgstr "Açılışta hazırda beklet"
+
+msgid "Startup to standby function is activated"
+msgstr "Açılışta hazırda bekletme fonksiyonu aktive edildi"
+
+msgid "Except GUI restarts"
+msgstr "Arayüz yeniden başlatmaları dışında"
+
+msgid "On all startups"
+msgstr "Tüm açılışlarda"
+
+msgid "Afghan"
+msgstr "Afganca"
+
+msgid "Albanian"
+msgstr "Arnavutça"
+
+msgid "Amharic"
+msgstr "Amharca"
+
+msgid "Arabic"
+msgstr "Arapça"
+
+msgid "Armenian"
+msgstr "Ermenice"
+
+msgid "Asturian"
+msgstr "Asturian"
+
+msgid "Azerian"
+msgstr "Azerice"
+
+msgid "Basque"
+msgstr "Baskça"
+
+msgid "Belarusian"
+msgstr "Beyaz Rusça"
+
+msgid "Bengali"
+msgstr "Bengali"
+
+msgid "Berbere"
+msgstr "Berbere"
+
+msgid "Bosnian"
+msgstr "Boşnakça"
+
+msgid "Breton"
+msgstr "Breton"
+
+msgid "Bulgarian"
+msgstr "Bulgarca"
+
+msgid "Catalan"
+msgstr "Katalanca"
+
+msgid "Chinese"
+msgstr "Çince"
+
+msgid "Croatian"
+msgstr "Hırvatca"
+
+msgid "Czech"
+msgstr "Çekce"
+
+msgid "Danish"
+msgstr "Danca"
+
+msgid "English"
+msgstr "İngilizce"
+
+msgid "Spanish"
+msgstr "İspanyolca"
+
+msgid "Estonian"
+msgstr "Estçe"
+
+msgid "Farsi"
+msgstr "Farsi"
+
+msgid "Finnish"
+msgstr "Fince"
+
+msgid "French"
+msgstr "Fransızca"
+
+msgid "Frisian"
+msgstr "Frizye"
+
+msgid "Galician"
+msgstr "Galiçya"
+
+msgid "Georgian"
+msgstr "Gürcüce"
+
+msgid "German"
+msgstr "Almanca"
+
+msgid "Gaelic"
+msgstr "Gal"
+
+msgid "Greek"
+msgstr "Yunanca"
+
+msgid "Gujarati"
+msgstr "Gujarati"
+
+msgid "Hebrew"
+msgstr "İbranice"
+
+msgid "Hindi"
+msgstr "Hindu"
+
+msgid "Hungarian"
+msgstr "Macarca"
+
+msgid "Icelandic"
+msgstr "İzlandaca"
+
+msgid "India"
+msgstr "Hintçe"
+
+msgid "Irish"
+msgstr "İrlandaca"
+
+msgid "Italian"
+msgstr "İtalyanca"
+
+msgid "Japanese"
+msgstr "Japonca"
+
+msgid "Kazakh"
+msgstr "Kazakça"
+
+msgid "Khmer"
+msgstr "Kmerce"
+
+msgid "Korean"
+msgstr "Korece"
+
+msgid "Kurdish"
+msgstr "Kürtçe"
+
+msgid "Kyrgyz"
+msgstr "Kırgızca"
+
+msgid "Latvian"
+msgstr "Latca"
+
+msgid "Lithuanian"
+msgstr "Litce"
+
+msgid "Luxembourg"
+msgstr "Lüksemburg"
+
+msgid "Macedonian"
+msgstr "Makedonca"
+
+msgid "Malayalam"
+msgstr "Malayalam"
+
+msgid "Mandarin"
+msgstr "Mandarin"
+
+msgid "Maltese"
+msgstr "Maltaca"
+
+msgid "Moldovan"
+msgstr "Moldova"
+
+msgid "Myanmar"
+msgstr "Burma"
+
+msgid "Dutch"
+msgstr "Hollandaca"
+
+msgid "Nepali"
+msgstr "Nepalce"
+
+msgid "Norwegian"
+msgstr "Norveçce"
+
+msgid "Persian"
+msgstr "Farsça"
+
+msgid "Polish"
+msgstr "Lehce"
+
+msgid "Portuguese"
+msgstr "Portekizce"
+
+msgid "Punjabi"
+msgstr "Pencapca"
+
+msgid "Pashto"
+msgstr "Peştuca"
+
+msgid "Romanian"
+msgstr "Romence"
+
+msgid "Russian"
+msgstr "Rusça"
+
+msgid "Serbian"
+msgstr "Sırpça"
+
+msgid "Sinhala"
+msgstr "Sinhala"
+
+msgid "Slovakian"
+msgstr "Slavca"
+
+msgid "Slovenian"
+msgstr "Slovakca"
+
+msgid "Sindhi"
+msgstr "Sintçe"
+
+msgid "Somali"
+msgstr "Somalice"
+
+msgid "Swali"
+msgstr "Swali"
+
+msgid "Sweden"
+msgstr "İsveçce"
+
+msgid "Tagalog"
+msgstr "Tagalog"
+
+msgid "Tajik"
+msgstr "Tajik"
+
+msgid "Tamil"
+msgstr "Tamil"
+
+msgid "Telugu"
+msgstr "Telugu"
+
+msgid "Thailand"
+msgstr "Taica"
+
+msgid "Tigrinya"
+msgstr "Tigrinya"
+
+msgid "Turkish"
+msgstr "Türkçe"
+
+msgid "Ukrainian"
+msgstr "Ukraynaca"
+
+msgid "Urdu"
+msgstr "Urduca"
+
+msgid "Vietnamese"
+msgstr "Vietnam"
+
+msgid "Welsh"
+msgstr "Galce"
+
+msgid "EPG file operations"
+msgstr "EPG dosya işlemleri"
+
+msgid "Backup"
+msgstr "Yedekle"
+
+msgid "Restore"
+msgstr "Geri Yükle"
+
+msgid "Delete"
+msgstr "Sil"

@@ -1,0 +1,584 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Buyukbang Panel v1.4.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-29 01:08+0100\n"
+"PO-Revision-Date: 2014-02-01 16:50+0200\n"
+"Last-Translator: Buyukbang <buyukbang@gmail.com>\n"
+"Language-Team: Buyukbang\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"Language: no\n"
+"X-Generator: Poedit 1.6.3\n"
+
+msgid "Only infoBar and EPG info"
+msgstr "Bare infoBar og EPG info"
+
+msgid "All EPG queries"
+msgstr "Alle EPG forespørsler"
+
+msgid "Disable"
+msgstr "Koble ut"
+
+msgid "At startup <Changes requires restart>"
+msgstr "Ved start <Endringer krever omstart>"
+
+msgid "In realtime <Uses more CPU>"
+msgstr "I nåtid <Bruker mer CPU>"
+
+msgid ""
+"Buyukbang Panel\n"
+"\n"
+"Another EPG copy operation is in progress. Please wait..."
+msgstr ""
+"Buyukbang Panel\n"
+"\n"
+"Another EPG kopi opersjon er i bruk"
+
+msgid "Another EPG copy operation is in progress. EPG copy will not start."
+msgstr ""
+"En annen EPG kopieringsoperasjon er i bruk. EPG kopiering vil ikke starte."
+
+msgid "%s copied"
+msgstr "%s kopiert"
+
+msgid "Copy failed for %s"
+msgstr "Kopiering feilet for %s"
+
+msgid "No EPG data available for %s"
+msgstr "Ingen EPG data tilgjengelig for"
+
+msgid "Writing %s"
+msgstr "Skriver %s"
+
+msgid "%s write failed"
+msgstr "%s skriving feilet"
+
+msgid "Loading %s"
+msgstr "Laster %s"
+
+msgid "%s loaded"
+msgstr "%s lastet"
+
+msgid "%s load failed"
+msgstr "%s lasting feilet"
+
+msgid "Configuration"
+msgstr "Konfigurasjon"
+
+msgid "Copy EPG periodically"
+msgstr "Kopiering av EPG periodisk"
+
+msgid "Interval (>=2 min)"
+msgstr "Interval (>=2 min)"
+
+msgid "Copy EPG at a scheduled time"
+msgstr "Kopiere EPG til en oppsatt tid"
+
+msgid "Scheduled EPG copy time"
+msgstr "Oppsatt EPG kopierings tid"
+
+msgid "When restart needed"
+msgstr "Når restart er nødvendig"
+
+msgid "Scheduler"
+msgstr "Planlegger"
+
+msgid "Scheduled operation"
+msgstr "Planlegger opersjon"
+
+msgid "Time"
+msgstr "Tid"
+
+msgid "Monday"
+msgstr "Mandag"
+
+msgid "Tuesday"
+msgstr "Tirsdag"
+
+msgid "Wednesday"
+msgstr "Onsdag"
+
+msgid "Thursday"
+msgstr "Torsdag"
+
+msgid "Friday"
+msgstr "fredag"
+
+msgid "Saturday"
+msgstr "Lørdag"
+
+msgid "Sunday"
+msgstr "Søndag"
+
+msgid "No weekday selected, scheduled operation is disabled"
+msgstr "Ingen ukedag er valgt, oppsatt opersjon er koblet fra"
+
+msgid "Scheduled operation executed"
+msgstr "Oppsatt operasjon utført"
+
+msgid "Shutdown"
+msgstr "Avstenging"
+
+msgid "Reboot"
+msgstr "Starte på nytt"
+
+msgid "Restart"
+msgstr "Omstart"
+
+msgid "Restart GUI"
+msgstr "Starte GUI på nytt"
+
+msgid "Standby"
+msgstr "Hvile modus"
+
+msgid "Startup copy delay (>=2 min)"
+msgstr "Oppstarts kopiering forsinket (>=2 min)"
+
+msgid "Force CrossEPG patch usage"
+msgstr "Tvunget CrossEPG patch usage"
+
+msgid "Copy EPG"
+msgstr "Kopiere EPG"
+
+msgid "Link EPG"
+msgstr "Link EPG"
+
+msgid "Read EPG bouquet"
+msgstr "Les EPG boiquet"
+
+msgid "Filter EPG"
+msgstr "Filter EPG"
+
+msgid "EPG titles"
+msgstr "EPG tittel"
+
+msgid "Language"
+msgstr "Språk"
+
+msgid "Fix EPG encoding"
+msgstr "Fiks EPG encoding"
+
+msgid "Encoding"
+msgstr "Encoding"
+
+msgid "Hide zap errors"
+msgstr "Gjem zap feil"
+
+msgid "Show in extensions"
+msgstr "Vis i extensions"
+
+msgid "Cancel"
+msgstr "Kanselere"
+
+msgid "Ok"
+msgstr "Ok"
+
+msgid "Show Log"
+msgstr "Vis Log"
+
+msgid "Manual Copy"
+msgstr "Manuell kopiering"
+
+msgid ""
+"Buyukbang Panel\n"
+"\n"
+"Restart needed to apply the new settings.\n"
+"\n"
+"Do you want to restart now?"
+msgstr ""
+"Buyukbang Panel\n"
+"\n"
+"Restart nødvendig for søke nye settinger. \n"
+"\n"
+"Do vill du ta en omstart? "
+
+msgid ""
+"Buyukbang Panel\n"
+"\n"
+"Updating encoding settings requires internet connection to query Kingofsat "
+"and this may take a few minutes.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+"Buyukbang Panel\n"
+"\n"
+"Updating encoding innstillinger krever internett tilkobling for forespøre "
+"Kingofsat for dette vill ta noe minutter. \n"
+"\n"
+"Do vill du fortsette?"
+
+msgid "Restart now?"
+msgstr "Omstart?"
+
+msgid ""
+"Buyukbang Panel\n"
+"\n"
+"Restart needed to load the EPG data.\n"
+"\n"
+"Do you want to restart now?"
+msgstr ""
+"Buyukbang Panel\n"
+"\n"
+"Restart nødvendig for og henter EPG data. \n"
+"\n"
+"Do vill du starte på nytt?"
+
+msgid "Clear"
+msgstr "Clear"
+
+msgid "Save"
+msgstr "Lagre"
+
+msgid "Miscellaneous tools for Enigma2"
+msgstr "Variert verktøy for Enigma2"
+
+msgid "Manual EPG copy started"
+msgstr "Manuell EPG kopiering startet"
+
+msgid "Scheduled EPG copy started"
+msgstr "Planlagt EPG kopiering startet"
+
+msgid "Periodic EPG copy started"
+msgstr "Periodisk EPG kopiering startet"
+
+msgid "Manual EPG copy completed"
+msgstr "Manuell EPG kopiering fullført"
+
+msgid "Scheduled EPG copy completed"
+msgstr "Planlagt EPG kopiering fullført"
+
+msgid "Scheduled EPG copy time is set to %s"
+msgstr "Planlagt EPG kopierings tid er satt til %s"
+
+msgid "Scheduled operation time is set to %s"
+msgstr "Planlagt operasjons tid er satt til %s"
+
+msgid "Periodic EPG copy completed"
+msgstr "Periodisk EPG kopiering fullført"
+
+msgid "Previous restart detected. Periodic EPG copy time recalculated."
+msgstr "Tidliggere omstart oppdaget. Periodisk EPG kopieringstid rekalkulert"
+
+msgid "Periodic EPG copy time is set to %s"
+msgstr "Periodisk EPG kopierings tid er satt til %s"
+
+msgid "Buyukbang Panel started"
+msgstr "Buyukbang Panel startet"
+
+msgid "PLi EPG patch detected"
+msgstr "PLi EPG patch oppdaget"
+
+msgid "PLi EPG patch not present on this image"
+msgstr "PLi EPG patch ikke tilgjengelig i dette image"
+
+msgid "Oudeis EPG patch detected"
+msgstr "Oudeis EPG patch oppdaget "
+
+msgid "Oudeis EPG patch not present on this image"
+msgstr "Oudeis EPG patch ikke tilgjengelig i dette image"
+
+msgid "CrossEPG patch detected"
+msgstr "CrossEPG patch oppdaget"
+
+msgid "CrossEPG patch not present on this image"
+msgstr "CrossEPG patch ikke tilgjengelig i dette image"
+
+msgid "Thread support detected"
+msgstr "Tread support oppdaget"
+
+msgid "Thread support not present on this image"
+msgstr "Tread support ikke tilgjengelig i dette image"
+
+msgid "Fixing EPG encoding failed"
+msgstr "Fixing EPG encoding feilet"
+
+msgid "Stop"
+msgstr "Stopp"
+
+msgid "Failed to update extensions menu"
+msgstr "Feilet i og oppdatere extension meny"
+
+msgid "Updating EPG encoding setting failed"
+msgstr "Oppdatere EPG encoding instillinger feilet"
+
+msgid "Bouquet named EPG not found, EPG copy aborted"
+msgstr "Bouquet navn EPG ikke funnet, EPG kopiering avsluttet"
+
+msgid "Settings saved"
+msgstr "Innstillinger lagret"
+
+msgid "Startup to standby"
+msgstr "Oppstart til vile modus"
+
+msgid "Startup to standby function is activated"
+msgstr "Oppstart til vile modus funksjon er aktivisert"
+
+msgid "Except GUI restarts"
+msgstr "Unntatt GUI omstart"
+
+msgid "On all startups"
+msgstr "Alle oppstart"
+
+msgid "Afghan"
+msgstr "Afgansk"
+
+msgid "Albanian"
+msgstr "Albansk"
+
+msgid "Amharic"
+msgstr "Amharisk"
+
+msgid "Arabic"
+msgstr "Arabisk"
+
+msgid "Armenian"
+msgstr "Armensk"
+
+msgid "Asturian"
+msgstr "Asturian"
+
+msgid "Azerian"
+msgstr "Azerian"
+
+msgid "Basque"
+msgstr "Baskisk"
+
+msgid "Belarusian"
+msgstr "Hviterussisk"
+
+msgid "Bengali"
+msgstr "Bengalsk"
+
+msgid "Berbere"
+msgstr "Berbisk"
+
+msgid "Bosnian"
+msgstr "Bosnisk"
+
+msgid "Breton"
+msgstr "Bretonsk"
+
+msgid "Bulgarian"
+msgstr "Bulgarsk"
+
+msgid "Catalan"
+msgstr "Katalansk"
+
+msgid "Chinese"
+msgstr "Kinesisk"
+
+msgid "Croatian"
+msgstr "Kroatisk"
+
+msgid "Czech"
+msgstr "Tjekkisk"
+
+msgid "Danish"
+msgstr "Dansk"
+
+msgid "English"
+msgstr "Engelsk"
+
+msgid "Spanish"
+msgstr "Spansk"
+
+msgid "Estonian"
+msgstr "Estisk"
+
+msgid "Farsi"
+msgstr "Babelonsk"
+
+msgid "Finnish"
+msgstr "Finsk"
+
+msgid "French"
+msgstr "Fransk"
+
+msgid "Frisian"
+msgstr "Frisisk"
+
+msgid "Galician"
+msgstr "Galisisk"
+
+msgid "Georgian"
+msgstr "Georgisk"
+
+msgid "German"
+msgstr "Tysk"
+
+msgid "Gaelic"
+msgstr "Gaelisk"
+
+msgid "Greek"
+msgstr "Gresk"
+
+msgid "Gujarati"
+msgstr "Gujarati"
+
+msgid "Hebrew"
+msgstr "Hebraisk"
+
+msgid "Hindi"
+msgstr "Hindi"
+
+msgid "Hungarian"
+msgstr "Ungarsk"
+
+msgid "Icelandic"
+msgstr "Islansk"
+
+msgid "India"
+msgstr "Indisk"
+
+msgid "Irish"
+msgstr "Irsk"
+
+msgid "Italian"
+msgstr "Italiensk"
+
+msgid "Japanese"
+msgstr "Japansk"
+
+msgid "Kazakh"
+msgstr "Kazakh"
+
+msgid "Khmer"
+msgstr "Khmer"
+
+msgid "Korean"
+msgstr "Koreansk"
+
+msgid "Kurdish"
+msgstr "Kurdisk"
+
+msgid "Kyrgyz"
+msgstr "Kyrgisisk"
+
+msgid "Latvian"
+msgstr "Latvisk"
+
+msgid "Lithuanian"
+msgstr "Litauisk"
+
+msgid "Luxembourg"
+msgstr "Luxenburg"
+
+msgid "Macedonian"
+msgstr "Macedonsk"
+
+msgid "Malayalam"
+msgstr "Malaysisk"
+
+msgid "Mandarin"
+msgstr "Mandarin"
+
+msgid "Maltese"
+msgstr "Maltesisk"
+
+msgid "Moldovan"
+msgstr "Moldovisk"
+
+msgid "Myanmar"
+msgstr "Burmesisk"
+
+msgid "Dutch"
+msgstr "Nederlansk"
+
+msgid "Nepali"
+msgstr "Nepalsk"
+
+msgid "Norwegian"
+msgstr "Norsk"
+
+msgid "Persian"
+msgstr "Persisk"
+
+msgid "Polish"
+msgstr "Polsk"
+
+msgid "Portuguese"
+msgstr "Portugisisk"
+
+msgid "Punjabi"
+msgstr "Punjabi"
+
+msgid "Pashto"
+msgstr "Pashto"
+
+msgid "Romanian"
+msgstr "Rumensk"
+
+msgid "Russian"
+msgstr "Russisk"
+
+msgid "Serbian"
+msgstr "Serbisk"
+
+msgid "Sinhala"
+msgstr "Sinhala"
+
+msgid "Slovakian"
+msgstr "Slovakisk"
+
+msgid "Slovenian"
+msgstr "Slovensk"
+
+msgid "Sindhi"
+msgstr "Sindhi"
+
+msgid "Somali"
+msgstr "Somalisk"
+
+msgid "Swali"
+msgstr "Swahili"
+
+msgid "Sweden"
+msgstr "Svensk"
+
+msgid "Tagalog"
+msgstr "Tagalog"
+
+msgid "Tajik"
+msgstr "Tajikisk"
+
+msgid "Tamil"
+msgstr "Tamilsk"
+
+msgid "Telugu"
+msgstr "Telugu"
+
+msgid "Thailand"
+msgstr "Thai"
+
+msgid "Tigrinya"
+msgstr "Tigrinya"
+
+msgid "Turkish"
+msgstr "Tyrkisk"
+
+msgid "Ukrainian"
+msgstr "Ukrainsk"
+
+msgid "Urdu"
+msgstr "Urdu"
+
+msgid "Vietnamese"
+msgstr "Vietnamesisk"
+
+msgid "Welsh"
+msgstr "Walisisk"
+
+msgid "EPG file operations"
+msgstr "Filoperasjoner"
+
+msgid "Backup"
+msgstr "Sikkerhetskopie"
+
+msgid "Restore"
+msgstr "Gjenopprette"
+
+msgid "Delete"
+msgstr "Slette"

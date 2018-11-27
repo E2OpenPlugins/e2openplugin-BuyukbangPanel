@@ -1,0 +1,544 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Buyukbang Panel v1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-05 14:22+0200\n"
+"PO-Revision-Date: 2012-08-18 14:22+0200\n"
+"Last-Translator: Buyukbang\n"
+"Language-Team: Buyukbang\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+
+msgid "Only infoBar and EPG info"
+msgstr ""
+
+msgid "All EPG queries"
+msgstr ""
+
+msgid "Disable"
+msgstr ""
+
+msgid "At startup <Changes requires restart>"
+msgstr ""
+
+msgid "In realtime <Uses more CPU>"
+msgstr ""
+
+msgid "Buyukbang Panel\n\nAnother EPG copy operation is in progress. Please wait..."
+msgstr ""
+
+msgid "Another EPG copy operation is in progress. EPG copy will not start."
+msgstr ""
+
+msgid "%s copied"
+msgstr ""
+
+msgid "Copy failed for %s"
+msgstr ""
+
+msgid "No EPG data available for %s"
+msgstr ""
+
+msgid "Writing %s"
+msgstr ""
+
+msgid "%s write failed"
+msgstr ""
+
+msgid "Loading %s"
+msgstr ""
+
+msgid "%s loaded"
+msgstr ""
+
+msgid "%s load failed"
+msgstr ""
+
+msgid "Configuration"
+msgstr ""
+
+msgid "Copy EPG periodically"
+msgstr ""
+
+msgid "Interval (>=2 min)"
+msgstr ""
+
+msgid "Copy EPG at a scheduled time"
+msgstr ""
+
+msgid "Scheduled EPG copy time"
+msgstr ""
+
+msgid "When restart needed"
+msgstr ""
+
+msgid "Scheduler"
+msgstr ""
+
+msgid "Scheduled operation"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
+msgid "No weekday selected, scheduled operation is disabled"
+msgstr ""
+
+msgid "Scheduled operation executed"
+msgstr ""
+
+msgid "Shutdown"
+msgstr ""
+
+msgid "Reboot"
+msgstr ""
+
+msgid "Restart"
+msgstr ""
+
+msgid "Restart GUI"
+msgstr ""
+
+msgid "Standby"
+msgstr ""
+
+msgid "Startup copy delay (>=2 min)"
+msgstr ""
+
+msgid "Force CrossEPG patch usage"
+msgstr ""
+
+msgid "Copy EPG"
+msgstr ""
+
+msgid "Link EPG"
+msgstr ""
+
+msgid "Read EPG bouquet"
+msgstr ""
+
+msgid "Filter EPG"
+msgstr ""
+
+msgid "EPG titles"
+msgstr ""
+
+
+msgid "Language"
+msgstr ""
+
+msgid "Fix EPG encoding"
+msgstr ""
+
+msgid "Encoding"
+msgstr ""
+
+msgid "Hide zap errors"
+msgstr ""
+
+msgid "Show in extensions"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Ok"
+msgstr ""
+
+msgid "Show Log"
+msgstr ""
+
+msgid "Manual Copy"
+msgstr ""
+
+msgid "Buyukbang Panel\n\nRestart needed to apply the new settings.\n\nDo you want to restart now?"
+msgstr ""
+
+msgid "Buyukbang Panel\n\nUpdating encoding settings requires internet connection to query Kingofsat and this may take a few minutes.\n\nDo you want to continue?"
+msgstr ""
+
+msgid "Restart now?"
+msgstr ""
+
+msgid "Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Miscellaneous tools for Enigma2"
+msgstr ""
+
+msgid "Manual EPG copy started"
+msgstr ""
+
+msgid "Scheduled EPG copy started"
+msgstr ""
+
+msgid "Periodic EPG copy started"
+msgstr ""
+
+msgid "Manual EPG copy completed"
+msgstr ""
+
+msgid "Scheduled EPG copy completed"
+msgstr ""
+
+msgid "Scheduled EPG copy time is set to %s"
+msgstr ""
+
+msgid "Scheduled operation time is set to %s"
+msgstr ""
+
+msgid "Periodic EPG copy completed"
+msgstr ""
+
+msgid "Previous restart detected. Periodic EPG copy time recalculated."
+msgstr ""
+
+msgid "Periodic EPG copy time is set to %s"
+msgstr ""
+
+msgid "Buyukbang Panel started"
+msgstr ""
+
+msgid "PLi EPG patch detected"
+msgstr ""
+
+msgid "PLi EPG patch not present on this image"
+msgstr ""
+
+msgid "Oudeis EPG patch detected"
+msgstr ""
+
+msgid "Oudeis EPG patch not present on this image"
+msgstr ""
+
+msgid "CrossEPG patch detected"
+msgstr ""
+
+msgid "CrossEPG patch not present on this image"
+msgstr ""
+
+msgid "Thread support detected"
+msgstr ""
+
+msgid "Thread support not present on this image"
+msgstr ""
+
+msgid "Fixing EPG encoding failed"
+msgstr ""
+
+msgid "Stop"
+msgstr ""
+
+msgid "Failed to update extensions menu"
+msgstr ""
+
+msgid "Updating EPG encoding setting failed"
+msgstr ""
+
+msgid "Bouquet named EPG not found, EPG copy aborted"
+msgstr ""
+
+msgid "Settings saved"
+msgstr ""
+
+msgid "Startup to standby"
+msgstr ""
+
+msgid "Startup to standby function is activated"
+msgstr ""
+
+msgid "Except GUI restarts"
+msgstr ""
+
+msgid "On all startups"
+msgstr ""
+
+msgid "Afghan"
+msgstr ""
+
+msgid "Albanian"
+msgstr ""
+
+msgid "Amharic"
+msgstr ""
+
+msgid "Arabic"
+msgstr ""
+
+msgid "Armenian"
+msgstr ""
+
+msgid "Asturian"
+msgstr ""
+
+msgid "Azerian"
+msgstr ""
+
+msgid "Basque"
+msgstr ""
+
+msgid "Belarusian"
+msgstr ""
+
+msgid "Bengali"
+msgstr ""
+
+msgid "Berbere"
+msgstr ""
+
+msgid "Bosnian"
+msgstr ""
+
+msgid "Breton"
+msgstr ""
+
+msgid "Bulgarian"
+msgstr ""
+
+msgid "Catalan"
+msgstr ""
+
+msgid "Chinese"
+msgstr ""
+
+msgid "Croatian"
+msgstr ""
+
+msgid "Czech"
+msgstr ""
+
+msgid "Danish"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Spanish"
+msgstr ""
+
+msgid "Estonian"
+msgstr ""
+
+msgid "Farsi"
+msgstr ""
+
+msgid "Finnish"
+msgstr ""
+
+msgid "French"
+msgstr ""
+
+msgid "Frisian"
+msgstr ""
+
+msgid "Galician"
+msgstr ""
+
+msgid "Georgian"
+msgstr ""
+
+msgid "German"
+msgstr ""
+
+msgid "Gaelic"
+msgstr ""
+
+msgid "Greek"
+msgstr ""
+
+msgid "Gujarati"
+msgstr ""
+
+msgid "Hebrew"
+msgstr ""
+
+msgid "Hindi"
+msgstr ""
+
+msgid "Hungarian"
+msgstr ""
+
+msgid "Icelandic"
+msgstr ""
+
+msgid "India"
+msgstr ""
+
+msgid "Irish"
+msgstr ""
+
+msgid "Italian"
+msgstr ""
+
+msgid "Japanese"
+msgstr ""
+
+msgid "Kazakh"
+msgstr ""
+
+msgid "Khmer"
+msgstr ""
+
+msgid "Korean"
+msgstr ""
+
+msgid "Kurdish"
+msgstr ""
+
+msgid "Kyrgyz"
+msgstr ""
+
+msgid "Latvian"
+msgstr ""
+
+msgid "Lithuanian"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macedonian"
+msgstr ""
+
+msgid "Malayalam"
+msgstr ""
+
+msgid "Mandarin"
+msgstr ""
+
+msgid "Maltese"
+msgstr ""
+
+msgid "Moldovan"
+msgstr ""
+
+msgid "Myanmar"
+msgstr ""
+
+msgid "Dutch"
+msgstr ""
+
+msgid "Nepali"
+msgstr ""
+
+msgid "Norwegian"
+msgstr ""
+
+msgid "Persian"
+msgstr ""
+
+msgid "Polish"
+msgstr ""
+
+msgid "Portuguese"
+msgstr ""
+
+msgid "Punjabi"
+msgstr ""
+
+msgid "Pashto"
+msgstr ""
+
+msgid "Romanian"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Serbian"
+msgstr ""
+
+msgid "Sinhala"
+msgstr ""
+
+msgid "Slovakian"
+msgstr ""
+
+msgid "Slovenian"
+msgstr ""
+
+msgid "Sindhi"
+msgstr ""
+
+msgid "Somali"
+msgstr ""
+
+msgid "Swali"
+msgstr ""
+
+msgid "Sweden"
+msgstr ""
+
+msgid "Tagalog"
+msgstr ""
+
+msgid "Tajik"
+msgstr ""
+
+msgid "Tamil"
+msgstr ""
+
+msgid "Telugu"
+msgstr ""
+
+msgid "Thailand"
+msgstr ""
+
+msgid "Tigrinya"
+msgstr ""
+
+msgid "Turkish"
+msgstr ""
+
+msgid "Ukrainian"
+msgstr ""
+
+msgid "Urdu"
+msgstr ""
+
+msgid "Vietnamese"
+msgstr ""
+
+msgid "Welsh"
+msgstr ""
+
+msgid "EPG file operations"
+msgstr ""
+
+msgid "Backup"
+msgstr ""
+
+msgid "Restore"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
