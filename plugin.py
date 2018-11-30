@@ -1,6 +1,6 @@
 ################################################################################
 #                                                                              #
-#                             BUYUKBANG PANE 1.4.2                             #
+#                            BUYUKBANG PANEL 1.4.2                             #
 # I want to thank to all open source Enigma2 developers and community,         #
 # especially Crossepg and EPG Import plugin developers, since I inspired or    #
 # directly used their codes to make BuyukBang Panel Project come true!         #
