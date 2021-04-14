@@ -105,7 +105,7 @@ try: #some old images may not have this key and crashes. "Try" fixes this possib
 except:
 	config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices=[("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default="disable")
 config.plugins.buyukbangpanel.hidezaperrors = ConfigEnableDisable(default=False)
-config.plugins.buyukbangpanel.scheduledoperation = ConfigSelection(choices=[("0", _("Disable")), ("1", _("Shutdown")), ("2", _("Reboot")), ("3", _("Restart GUI")), ("4", _("Standby")) ], default="0")
+config.plugins.buyukbangpanel.scheduledoperation = ConfigSelection(choices=[("0", _("Disable")), ("1", _("Shutdown")), ("2", _("Reboot")), ("3", _("Restart GUI")), ("4", _("Standby"))], default="0")
 config.plugins.buyukbangpanel.scheduledoperationtime = ConfigClock(default=((5*60) + 00) * 60) # 5:00
 config.plugins.buyukbangpanel.scheduledoperationmon = ConfigEnableDisable(default=True)
 config.plugins.buyukbangpanel.scheduledoperationtue = ConfigEnableDisable(default=True)
@@ -114,7 +114,7 @@ config.plugins.buyukbangpanel.scheduledoperationthu = ConfigEnableDisable(defaul
 config.plugins.buyukbangpanel.scheduledoperationfri = ConfigEnableDisable(default=True)
 config.plugins.buyukbangpanel.scheduledoperationsat = ConfigEnableDisable(default=True)
 config.plugins.buyukbangpanel.scheduledoperationsun = ConfigEnableDisable(default=True)
-config.plugins.buyukbangpanel.restarttype = ConfigSelection(choices=[("3", _("Restart GUI")), ("2", _("Reboot")) ], default="3")
+config.plugins.buyukbangpanel.restarttype = ConfigSelection(choices=[("3", _("Restart GUI")), ("2", _("Reboot"))], default="3")
 config.plugins.buyukbangpanel.showinextensions = ConfigYesNo(default=True)
 config.plugins.buyukbangpanel.lastcopyepgrestarttime = ConfigNumber(default=0)
 config.plugins.buyukbangpanel.startuptostandby =  ConfigSelection(choices=[("0", _("Disable")), ("1", _("Except GUI restarts")), ("2", _("On all startups"))], default="0")
@@ -153,7 +153,7 @@ def getEPGMap(self):
 	#python tuples
 	#unknown format string chars are returned as python None values !
 	for bouquet in bouquets:
-		if bouquet[1].replace('\xc2\x86', '').replace('\xc2\x87', '').lower() == "epg" :
+		if bouquet[1].replace('\xc2\x86', '').replace('\xc2\x87', '').lower() == "epg":
 			services = serviceHandler.list(eServiceReference(bouquet[0]))
 			channels = services and services.getContent("RSN", True)
 			srcref = {}
@@ -265,7 +265,7 @@ def copyEpg(self):
 	#python tuples
 	#unknown format string chars are returned as python None values !
 	for bouquet in bouquets:
-		if bouquet[1].replace('\xc2\x86', '').replace('\xc2\x87', '').lower() == "epg" :
+		if bouquet[1].replace('\xc2\x86', '').replace('\xc2\x87', '').lower() == "epg":
 			services = serviceHandler.list(eServiceReference(bouquet[0]))
 			channels = services and services.getContent("RSN", True)
 			# Add one more dummy seperator at the end. So there will be no need to duplicate looped importEvents code part for just the last item.
@@ -286,7 +286,7 @@ def copyEpg(self):
 			timeAdjustment=0
 			timeAdjustmentStr=''
 			if channel[2]:
-				timeAdjustmentStr=channel[2][channel[2].find('(')+1 : channel[2].find(')')]
+				timeAdjustmentStr=channel[2][channel[2].find('(')+1: channel[2].find(')')]
 				if len(timeAdjustmentStr) > 0:
 					timeAdjustment=int(timeAdjustmentStr) * 3600
 			if eventlist and dstChannelList:
@@ -524,7 +524,7 @@ if config.plugins.buyukbangpanel.filterdummy.value:
 def InfoBarEPG_openEventView(self):
 	found = 0
 	ref = self.session.nav.getCurrentlyPlayingServiceReference()
-	self.epglist = [ ]
+	self.epglist = []
 	epglist = self.epglist
 	self.is_now_next = False
 	epg = eEPGCache.getInstance()
@@ -776,7 +776,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 
 	def save_pre(self):
 		if config.plugins.buyukbangpanel.fixepgencoding.value != "disable" \
-		and (self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value ):
+		and (self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value):
 			encodingConfirmation = self.session.openWithCallback(self.save,MessageBox,_("Buyukbang Panel\n\nUpdating encoding settings requires internet connection to query Kingofsat and this may take a few minutes.\n\nDo you want to continue?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 			encodingConfirmation.setTitle(_("Continue?"))
 		else:
@@ -807,7 +807,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			or self.oldscheduledoperationfri != config.plugins.buyukbangpanel.scheduledoperationfri.value \
 			or self.oldscheduledoperationsat != config.plugins.buyukbangpanel.scheduledoperationsat.value \
 			or self.oldscheduledoperationsun != config.plugins.buyukbangpanel.scheduledoperationsun.value \
-			or self.oldstartuptostandby != config.plugins.buyukbangpanel.startuptostandby.value :
+			or self.oldstartuptostandby != config.plugins.buyukbangpanel.startuptostandby.value:
 				if autoStartTimer is not None:
 					autoStartTimer.update()
 
@@ -834,7 +834,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			or self.olddummystring != config.plugins.buyukbangpanel.dummystring.value \
 			or self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value \
 			or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value and config.plugins.buyukbangpanel.fixepgencoding.value != "disable" \
-			or self.oldhidezaperrors != config.plugins.buyukbangpanel.hidezaperrors.value :
+			or self.oldhidezaperrors != config.plugins.buyukbangpanel.hidezaperrors.value:
 				restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to apply the new settings.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 				restartConfirmation.setTitle(_("Restart now?"))
 
@@ -1087,10 +1087,10 @@ except:
 		# ML Optimized: local CRCTABLE (locals are faster), remove self, remove code that has no effect, faster loop    
 		#crc=0x00000000L
 		#crc=((crc << 8 ) & 0xffffff00L) ^ crctable[((crc >> 24) ^ crctype) & 0x000000ffL ]
-		crc = crctable[crctype & 0x000000ffL ]
-		crc = ((crc << 8 ) & 0xffffff00L) ^ crctable[((crc >> 24) ^ len(crcdata)) & 0x000000ffL ]
+		crc = crctable[crctype & 0x000000ffL]
+		crc = ((crc << 8) & 0xffffff00L) ^ crctable[((crc >> 24) ^ len(crcdata)) & 0x000000ffL]
 		for d in crcdata:
-		    crc=((crc << 8 ) & 0xffffff00L) ^ crctable[((crc >> 24) ^ ord(d)) & 0x000000ffL ]
+		    crc=((crc << 8) & 0xffffff00L) ^ crctable[((crc >> 24) ^ ord(d)) & 0x000000ffL]
 		return crc
 
 # convert time or length from datetime format to 3 bytes hex value 
@@ -1217,7 +1217,7 @@ class epgdat_class:
 				EPG_EVENT_HEADER_datasize += 4  # add 4 bytes for a sigle REF DESC (CRC32)
 				#if not epg_event_description_dict.has_key(short_d[0]):
 				#if not exist_event(short_d[0]) :
-				if not self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.has_key(short_d[0]) :
+				if not self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.has_key(short_d[0]):
 					# DESCRIPTION DATA
 					pack_1 = s_BB.pack(0x4d,len(short_d[1])) + short_d[1]
 					# DESCRIPTION HEADER (2 int) will be computed at the end just before EPG.DAT write
@@ -1234,7 +1234,7 @@ class epgdat_class:
 				for desc in long_d:
 					#if not epg_event_description_dict.has_key(long_d[i][0]):
 					#if not exist_event(long_d[i][0]) :
-					if not self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.has_key(desc[0]) :
+					if not self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.has_key(desc[0]):
 						# DESCRIPTION DATA
 						pack_1 = s_BB.pack(0x4e,len(desc[1])) + desc[1]
 						self.EPG_HEADER2_description_count += 1
@@ -1247,7 +1247,7 @@ class epgdat_class:
 						self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[desc[0]][1] += 1
 				# **** (2) : have REF DESC and now can create EVENT HEADER / DATA ****
 				# EVENT HEADER (2 bytes: 0x01 , 10 bytes + number of CRC32 * 4)
-				pack_1=s_BB.pack(0x01,0x0a + EPG_EVENT_HEADER_datasize )
+				pack_1=s_BB.pack(0x01,0x0a + EPG_EVENT_HEADER_datasize)
 				self.EPG_TMP_FD.write(pack_1)
 				# extract date and time from <event>
 				# unix format (second since 1970) and already GMT corrected
@@ -1290,7 +1290,7 @@ class epgdat_class:
 			pack_1=self.s_I.pack(self.EPG_HEADER2_description_count)
 			epgdat_fd.write(pack_1)
 			# event MUST BE WRITTEN IN ASCENDING ORDERED using HASH CODE as index
-			for temp in sorted(self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.keys()) :
+			for temp in sorted(self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.keys()):
 				pack_2=self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[temp]
 				#pack_1=struct.pack(LB_ENDIAN+"II",int(temp,16),pack_2[1])
 				pack_1=s_ii.pack(temp,pack_2[1])
@@ -1373,7 +1373,7 @@ class AutoStartTimer:
 			and config.plugins.buyukbangpanel.scheduledoperationthu.value == False \
 			and config.plugins.buyukbangpanel.scheduledoperationfri.value == False \
 			and config.plugins.buyukbangpanel.scheduledoperationsat.value == False \
-			and config.plugins.buyukbangpanel.scheduledoperationwed.value == False :
+			and config.plugins.buyukbangpanel.scheduledoperationwed.value == False:
 				dayFound = 2
 				print>>log, _("No weekday selected, scheduled operation is disabled")
 			while (dayFound == 0):
