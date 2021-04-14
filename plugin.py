@@ -80,44 +80,44 @@ language.addCallback(localeInit)
 #Set default configuration
 config.plugins.buyukbangpanel = ConfigSubsection()
 if hasattr(eEPGCache, 'importEvent'):
-	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default = True)
-	config.plugins.buyukbangpanel.interval = ConfigNumber(default = 60)
+	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default=True)
+	config.plugins.buyukbangpanel.interval = ConfigNumber(default=60)
 elif hasattr(eEPGCache, 'load'):
-	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default = True)
-	config.plugins.buyukbangpanel.interval = ConfigNumber(default = 600)
+	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default=True)
+	config.plugins.buyukbangpanel.interval = ConfigNumber(default=600)
 else:
-	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default = False)
-	config.plugins.buyukbangpanel.interval = ConfigNumber(default = 600)
-config.plugins.buyukbangpanel.scheduled = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledepgcopytime = ConfigClock(default = ((21*60) + 00) * 60) # 21:00
-config.plugins.buyukbangpanel.startupcopydelay = ConfigNumber(default = 2)
-config.plugins.buyukbangpanel.forceepgdat = ConfigYesNo(default = False)
-config.plugins.buyukbangpanel.linkepg = ConfigSelection(choices = [("0", _("Only infoBar and EPG info")), ("1", _("All EPG queries")), ("2", _("Disable"))], default = "0")
-config.plugins.buyukbangpanel.readepgboquet = ConfigSelection(choices = [("0", _("At startup <Changes requires restart>")), ("1", _("In realtime <Uses more CPU>"))], default = "0")
-config.plugins.buyukbangpanel.filterdummy = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.dummystring = ConfigText(default = 'Current,Next,dummyEventName,.,', fixed_size = False)
-config.plugins.buyukbangpanel.epgencoding = ConfigSelection(choices = [("ISO6397", _("ISO6397")),("ISO8859-1", _("ISO8859-1")),("ISO8859-2", _("ISO8859-2")), ("ISO8859-3", _("ISO8859-3")), ("ISO8859-4", _("ISO8859-4")), ("ISO8859-5", _("ISO8859-5")), ("ISO8859-6", _("ISO8859-6")), ("ISO8859-7", _("ISO8859-7")), ("ISO8859-8", _("ISO8859-8")), ("ISO8859-9", _("ISO8859-9")), ("ISO8859-10", _("ISO8859-10")), ("ISO8859-11", _("ISO8859-11")), ("ISO8859-13", _("ISO8859-13")), ("ISO8859-14", _("ISO8859-14")), ("ISO8859-15", _("ISO8859-15")), ("ISO8859-16", _("ISO8859-16"))], default = "ISO8859-9")
+	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default=False)
+	config.plugins.buyukbangpanel.interval = ConfigNumber(default=600)
+config.plugins.buyukbangpanel.scheduled = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledepgcopytime = ConfigClock(default=((21*60) + 00) * 60) # 21:00
+config.plugins.buyukbangpanel.startupcopydelay = ConfigNumber(default=2)
+config.plugins.buyukbangpanel.forceepgdat = ConfigYesNo(default=False)
+config.plugins.buyukbangpanel.linkepg = ConfigSelection(choices=[("0", _("Only infoBar and EPG info")), ("1", _("All EPG queries")), ("2", _("Disable"))], default="0")
+config.plugins.buyukbangpanel.readepgboquet = ConfigSelection(choices=[("0", _("At startup <Changes requires restart>")), ("1", _("In realtime <Uses more CPU>"))], default="0")
+config.plugins.buyukbangpanel.filterdummy = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.dummystring = ConfigText(default='Current,Next,dummyEventName,.,', fixed_size=False)
+config.plugins.buyukbangpanel.epgencoding = ConfigSelection(choices=[("ISO6397", _("ISO6397")),("ISO8859-1", _("ISO8859-1")),("ISO8859-2", _("ISO8859-2")), ("ISO8859-3", _("ISO8859-3")), ("ISO8859-4", _("ISO8859-4")), ("ISO8859-5", _("ISO8859-5")), ("ISO8859-6", _("ISO8859-6")), ("ISO8859-7", _("ISO8859-7")), ("ISO8859-8", _("ISO8859-8")), ("ISO8859-9", _("ISO8859-9")), ("ISO8859-10", _("ISO8859-10")), ("ISO8859-11", _("ISO8859-11")), ("ISO8859-13", _("ISO8859-13")), ("ISO8859-14", _("ISO8859-14")), ("ISO8859-15", _("ISO8859-15")), ("ISO8859-16", _("ISO8859-16"))], default="ISO8859-9")
 try: #some old images may not have this key and crashes. "Try" fixes this possible bug.
 	if config.osd.language.value == "tr_TR":
-		config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices = [("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default = "tur")
+		config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices=[("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default="tur")
 	else:
-		config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices = [("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default = "disable")
+		config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices=[("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default="disable")
 except:
-	config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices = [("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default = "disable")
-config.plugins.buyukbangpanel.hidezaperrors = ConfigEnableDisable(default = False)
-config.plugins.buyukbangpanel.scheduledoperation = ConfigSelection(choices = [("0", _("Disable")), ("1", _("Shutdown")), ("2", _("Reboot")), ("3", _("Restart GUI")), ("4", _("Standby")) ], default = "0")
-config.plugins.buyukbangpanel.scheduledoperationtime = ConfigClock(default = ((5*60) + 00) * 60) # 5:00
-config.plugins.buyukbangpanel.scheduledoperationmon = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationtue = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationwed = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationthu = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationfri = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationsat = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationsun = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.restarttype = ConfigSelection(choices = [("3", _("Restart GUI")), ("2", _("Reboot")) ], default = "3")
-config.plugins.buyukbangpanel.showinextensions = ConfigYesNo(default = True)
-config.plugins.buyukbangpanel.lastcopyepgrestarttime = ConfigNumber(default = 0)
-config.plugins.buyukbangpanel.startuptostandby =  ConfigSelection(choices = [("0", _("Disable")), ("1", _("Except GUI restarts")), ("2", _("On all startups"))], default = "0")
+	config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices=[("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default="disable")
+config.plugins.buyukbangpanel.hidezaperrors = ConfigEnableDisable(default=False)
+config.plugins.buyukbangpanel.scheduledoperation = ConfigSelection(choices=[("0", _("Disable")), ("1", _("Shutdown")), ("2", _("Reboot")), ("3", _("Restart GUI")), ("4", _("Standby")) ], default="0")
+config.plugins.buyukbangpanel.scheduledoperationtime = ConfigClock(default=((5*60) + 00) * 60) # 5:00
+config.plugins.buyukbangpanel.scheduledoperationmon = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationtue = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationwed = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationthu = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationfri = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationsat = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationsun = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.restarttype = ConfigSelection(choices=[("3", _("Restart GUI")), ("2", _("Reboot")) ], default="3")
+config.plugins.buyukbangpanel.showinextensions = ConfigYesNo(default=True)
+config.plugins.buyukbangpanel.lastcopyepgrestarttime = ConfigNumber(default=0)
+config.plugins.buyukbangpanel.startuptostandby =  ConfigSelection(choices=[("0", _("Disable")), ("1", _("Except GUI restarts")), ("2", _("On all startups"))], default="0")
 
 # Plugin definition
 from Plugins.Plugin import PluginDescriptor
@@ -189,7 +189,7 @@ def copyEpg(self):
 		print>>log, "\n"
 		print>>log, _("Another EPG copy operation is in progress. EPG copy will not start.")
 		if hasattr(self, 'save_pre'):
-			self.session.open(MessageBox, _("Buyukbang Panel\n\nAnother EPG copy operation is in progress. Please wait..."), MessageBox.TYPE_ERROR, timeout = 10, close_on_any_key = True)
+			self.session.open(MessageBox, _("Buyukbang Panel\n\nAnother EPG copy operation is in progress. Please wait..."), MessageBox.TYPE_ERROR, timeout=10, close_on_any_key=True)
 		return
 	if hasattr(self, 'save_pre'):
 		print>>log, _("Manual EPG copy started")
@@ -587,7 +587,7 @@ class mainMenu(Screen):
 		</widget>	
 	</screen>"""
 	
-	def __init__(self, session, args = 0):
+	def __init__(self, session, args=0):
 		
 		self.session = session
 		self.setup_title = _("Buyukbang Panel v1.4.2             buyukbang.blogspot.com")
@@ -666,7 +666,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 		<widget name="status" position="10,300" size="540,60" font="Regular;20" />
 	</screen>"""
 	
-	def __init__(self, session, args = 0):
+	def __init__(self, session, args=0):
 		global menuIndex
 		self.session = session
 		self.copyEpg = copyEpg
@@ -709,7 +709,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			self.list.append(getConfigListEntry(_("When restart needed") + ":", cfg.restarttype))
 			self.list.append(getConfigListEntry(_("Show in extensions") + ":", cfg.showinextensions))
 
-		ConfigListScreen.__init__(self, self.list, session = self.session, on_change = self.changedEntry)
+		ConfigListScreen.__init__(self, self.list, session=self.session, on_change=self.changedEntry)
 		self["config"].onSelectionChanged.append(self.selectionChanged)
 		self["status"] = Label()
 		self["statusbar"] = Label()
@@ -777,7 +777,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 	def save_pre(self):
 		if config.plugins.buyukbangpanel.fixepgencoding.value != "disable" \
 		and (self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value ):
-			encodingConfirmation = self.session.openWithCallback(self.save,MessageBox,_("Buyukbang Panel\n\nUpdating encoding settings requires internet connection to query Kingofsat and this may take a few minutes.\n\nDo you want to continue?"), MessageBox.TYPE_YESNO, timeout = 15, default = True)
+			encodingConfirmation = self.session.openWithCallback(self.save,MessageBox,_("Buyukbang Panel\n\nUpdating encoding settings requires internet connection to query Kingofsat and this may take a few minutes.\n\nDo you want to continue?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 			encodingConfirmation.setTitle(_("Continue?"))
 		else:
 			self.save(True)
@@ -835,7 +835,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			or self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value \
 			or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value and config.plugins.buyukbangpanel.fixepgencoding.value != "disable" \
 			or self.oldhidezaperrors != config.plugins.buyukbangpanel.hidezaperrors.value :
-				restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to apply the new settings.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout = 15, default = True)
+				restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to apply the new settings.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 				restartConfirmation.setTitle(_("Restart now?"))
 
 	def restartEnigma(self, answer):
@@ -875,7 +875,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 	def afterCopyEPG(self):
 		global reboot
 		if reboot:
-			restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout = 15, default = True)
+			restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 			restartConfirmation.setTitle(_("Restart now?"))
 		self.update()
 
@@ -1468,7 +1468,7 @@ class AutoStartTimer:
 		if reboot:
 			config.plugins.buyukbangpanel.lastcopyepgrestarttime.setValue(int(time.time()))
 			config.plugins.buyukbangpanel.lastcopyepgrestarttime.save()
-			restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout = 15, default = True)
+			restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 			restartConfirmation.setTitle(_("Restart now?"))
 		nowt = time.time()
 		if time.time() - 3600 < self.scheduledoperationtime < time.time() + 60:
@@ -1564,26 +1564,26 @@ def housekeepingExtensionsmenu(el):
 		print>>log, e
 
 description = _("Miscellaneous tools for Enigma2")
-config.plugins.buyukbangpanel.showinextensions.addNotifier(housekeepingExtensionsmenu, initial_call = False, immediate_feedback = False)
-extDescriptor = PluginDescriptor(name="Buyukbang Panel", description = description, where = PluginDescriptor.WHERE_EXTENSIONSMENU, fnc = extensionsmenu)
+config.plugins.buyukbangpanel.showinextensions.addNotifier(housekeepingExtensionsmenu, initial_call=False, immediate_feedback=False)
+extDescriptor = PluginDescriptor(name="Buyukbang Panel", description=description, where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=extensionsmenu)
 
 def Plugins(**kwargs):
 	result = [
 		PluginDescriptor(
 			name="Buyukbang Panel",
-			description = description,
-			where = [
+			description=description,
+			where=[
 				PluginDescriptor.WHERE_AUTOSTART,
 				PluginDescriptor.WHERE_SESSIONSTART
 			],
-			fnc = autostart,
+			fnc=autostart,
 		),
 		PluginDescriptor(
 			name="Buyukbang Panel",
-			description = description,
-			where = PluginDescriptor.WHERE_PLUGINMENU,
-			icon = 'plugin.png',
-			fnc = main
+			description=description,
+			where=PluginDescriptor.WHERE_PLUGINMENU,
+			icon='plugin.png',
+			fnc=main
 		),
 	]
 	if config.plugins.buyukbangpanel.showinextensions.value:
