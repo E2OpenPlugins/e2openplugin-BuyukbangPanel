@@ -15,9 +15,9 @@ mutex = threading.Lock()
 
 def write(data):
 	timestamp = time.strftime("%Y.%m.%d %H:%M:%S", time.localtime(time.time()))
-	dataLength=len(data)
+	dataLength = len(data)
 	# Do not print timestamp with long exception data
-	if dataLength >  1 and dataLength < 110:
+	if dataLength > 1 and dataLength < 110:
 		data = timestamp + " - " + data
 	mutex.acquire()
 	try:

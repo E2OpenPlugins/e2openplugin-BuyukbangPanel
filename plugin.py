@@ -89,7 +89,7 @@ else:
 	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default=False)
 	config.plugins.buyukbangpanel.interval = ConfigNumber(default=600)
 config.plugins.buyukbangpanel.scheduled = ConfigEnableDisable(default=True)
-config.plugins.buyukbangpanel.scheduledepgcopytime = ConfigClock(default=((21*60) + 00) * 60) # 21:00
+config.plugins.buyukbangpanel.scheduledepgcopytime = ConfigClock(default=((21 * 60) + 00) * 60) # 21:00
 config.plugins.buyukbangpanel.startupcopydelay = ConfigNumber(default=2)
 config.plugins.buyukbangpanel.forceepgdat = ConfigYesNo(default=False)
 config.plugins.buyukbangpanel.linkepg = ConfigSelection(choices=[("0", _("Only infoBar and EPG info")), ("1", _("All EPG queries")), ("2", _("Disable"))], default="0")
@@ -106,7 +106,7 @@ except:
 	config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices=[("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default="disable")
 config.plugins.buyukbangpanel.hidezaperrors = ConfigEnableDisable(default=False)
 config.plugins.buyukbangpanel.scheduledoperation = ConfigSelection(choices=[("0", _("Disable")), ("1", _("Shutdown")), ("2", _("Reboot")), ("3", _("Restart GUI")), ("4", _("Standby"))], default="0")
-config.plugins.buyukbangpanel.scheduledoperationtime = ConfigClock(default=((5*60) + 00) * 60) # 5:00
+config.plugins.buyukbangpanel.scheduledoperationtime = ConfigClock(default=((5 * 60) + 00) * 60) # 5:00
 config.plugins.buyukbangpanel.scheduledoperationmon = ConfigEnableDisable(default=True)
 config.plugins.buyukbangpanel.scheduledoperationtue = ConfigEnableDisable(default=True)
 config.plugins.buyukbangpanel.scheduledoperationwed = ConfigEnableDisable(default=True)
@@ -117,7 +117,7 @@ config.plugins.buyukbangpanel.scheduledoperationsun = ConfigEnableDisable(defaul
 config.plugins.buyukbangpanel.restarttype = ConfigSelection(choices=[("3", _("Restart GUI")), ("2", _("Reboot"))], default="3")
 config.plugins.buyukbangpanel.showinextensions = ConfigYesNo(default=True)
 config.plugins.buyukbangpanel.lastcopyepgrestarttime = ConfigNumber(default=0)
-config.plugins.buyukbangpanel.startuptostandby =  ConfigSelection(choices=[("0", _("Disable")), ("1", _("Except GUI restarts")), ("2", _("On all startups"))], default="0")
+config.plugins.buyukbangpanel.startuptostandby = ConfigSelection(choices=[("0", _("Disable")), ("1", _("Except GUI restarts")), ("2", _("On all startups"))], default="0")
 
 # Plugin definition
 from Plugins.Plugin import PluginDescriptor
@@ -126,7 +126,7 @@ from Plugins.Plugin import PluginDescriptor
 _session = None 
 autoStartTimer = None
 autostartExecuted = None
-timerEpgCopyRunning  = False
+timerEpgCopyRunning = False
 manualEpgCopyRunning = False
 scheduledOperation = None
 reboot = False
@@ -208,9 +208,9 @@ def copyEpg(self):
 	if not hasattr(eEPGCache, 'importEvent') or config.plugins.buyukbangpanel.forceepgdat.value:
 		epgpath = "/hdd"
 		epgfile = "/hdd/epg.dat"
-		cfFound=False
-		usbFound=False
-		hddFound=False
+		cfFound = False
+		usbFound = False
+		hddFound = False
 		fmount = None
 		# Reported: Some images don't support popen, may be they have a bad/missing implementation.
 		try:
@@ -223,22 +223,22 @@ def copyEpg(self):
 				pass
 		if fmount:
 			for l in fmount.xreadlines():
-				if l.find('/media/cf')!=-1:
-					cfFound=True
-				if l.find('/media/usb')!=-1:
-					usbFound=True
-				if l.find('/media/hdd')!=-1:
-					hddFound=True
+				if l.find('/media/cf') != -1:
+					cfFound = True
+				if l.find('/media/usb') != -1:
+					usbFound = True
+				if l.find('/media/hdd') != -1:
+					hddFound = True
 			fmount.close()
 		if cfFound:
-			epgpath='/media/cf'
-			epgfile='/media/cf/epg.dat'
+			epgpath = '/media/cf'
+			epgfile = '/media/cf/epg.dat'
 		if usbFound:
-			epgpath='/media/usb'
-			epgfile='/media/usb/epg.dat'
+			epgpath = '/media/usb'
+			epgfile = '/media/usb/epg.dat'
 		if hddFound:
-			epgpath='/media/hdd'
-			epgfile='/media/hdd/epg.dat'
+			epgpath = '/media/hdd'
+			epgfile = '/media/hdd/epg.dat'
 		try: #some old images do not have this key and crashes. "Try" fixes this bug.
 			if config.misc.epgcache_filename.value:
 				parent = os.path.split(config.misc.epgcache_filename.value)[0]
@@ -272,8 +272,8 @@ def copyEpg(self):
 			channels.append([None,"1:64:",None])
 	srcChannel = None
 	dstChannelList = []
-	eventlist  = {}
-	timeAdjustment=0
+	eventlist = {}
+	timeAdjustment = 0
 	if not channels:
 		manualEpgCopyRunning = False
 		timerEpgCopyRunning = False
@@ -283,12 +283,12 @@ def copyEpg(self):
 		return
 	for channel in channels:
 		if channel[1].startswith("1:64:"):
-			timeAdjustment=0
-			timeAdjustmentStr=''
+			timeAdjustment = 0
+			timeAdjustmentStr = ''
 			if channel[2]:
-				timeAdjustmentStr=channel[2][channel[2].find('(')+1: channel[2].find(')')]
+				timeAdjustmentStr = channel[2][channel[2].find('(') + 1: channel[2].find(')')]
 				if len(timeAdjustmentStr) > 0:
-					timeAdjustment=int(timeAdjustmentStr) * 3600
+					timeAdjustment = int(timeAdjustmentStr) * 3600
 			if eventlist and dstChannelList:
 				try:
 					if hasattr(eEPGCache, 'importEvents') and not config.plugins.buyukbangpanel.forceepgdat.value:
@@ -309,13 +309,13 @@ def copyEpg(self):
 					self["statusbar"].setText(_("No EPG data available for %s") % srcChannel)
 			srcChannel = None
 			dstChannelList = []
-			eventlist  = {}
+			eventlist = {}
 		elif srcChannel is None:
 			srcChannel = channel[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
 			#B = Event Begin Time, D = Event Duration, T = Event Title, S = Event Short Description, E = Event Extended Description, 0 = PyLong(0)
 			eventlist = epgcache.lookupEvent(['BDTSE0', (channel[1], -1, -1, -1)])
 			for i in range(len(eventlist)):
-				eventlist[i] = (eventlist[i][0]+timeAdjustment,eventlist[i][1],eventlist[i][2],eventlist[i][3],eventlist[i][4],eventlist[i][5])
+				eventlist[i] = (eventlist[i][0] + timeAdjustment,eventlist[i][1],eventlist[i][2],eventlist[i][3],eventlist[i][4],eventlist[i][5])
 		else:
 			dstChannelList.append(channel[1])
 	if epgdat is not None:
@@ -381,7 +381,7 @@ def copyEpg(self):
 baseeEPGCache_lookupEventTime = eEPGCache.lookupEventTime
 
 def eEPGCache_lookupEventTime(self, ref, start_time, direction=None):
-	if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value  == "1":
+	if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value == "1":
 		self.dst2src = self.getEPGMap()[0]
 	if self.dst2src.has_key(ref.toString()):
 		ref = self.dst2src[ref.toString()][3]
@@ -401,7 +401,7 @@ if config.plugins.buyukbangpanel.linkepg.value != "2":
 #baseeEPGCache_lookupeventid = eEPGCache.lookupeventid
 
 def eEPGCache_lookupeventid(self, ref, eventid):
-	if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value  == "1":
+	if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value == "1":
 		self.dst2src = self.getEPGMap()[0]
 	if self.dst2src.has_key(ref.toString()):
 		ref = self.dst2src[ref.toString()][3]
@@ -443,7 +443,7 @@ baseeEPGCache_lookupEvent = eEPGCache.lookupEvent
 #   the fourth is the end_time .. ( optional .. for query all events in time range)
 def eEPGCache_lookupEvent(self, listoftuple, buildFunc=None):
 	resultList = {}
-	if not hasattr(eEPGCache, 'dst2src') or not hasattr(eEPGCache, 'src2dst') or config.plugins.buyukbangpanel.readepgboquet.value  == "1":
+	if not hasattr(eEPGCache, 'dst2src') or not hasattr(eEPGCache, 'src2dst') or config.plugins.buyukbangpanel.readepgboquet.value == "1":
 		EPGMap = self.getEPGMap()
 		self.dst2src = EPGMap[0]
 		self.src2dst = EPGMap[1]
@@ -461,7 +461,7 @@ def eEPGCache_lookupEvent(self, listoftuple, buildFunc=None):
 	if buildFunc is not None:
 		resultList = baseeEPGCache_lookupEvent(self, listoftuple, buildFunc)
 	else:
-		resultList =  baseeEPGCache_lookupEvent(self, listoftuple)
+		resultList = baseeEPGCache_lookupEvent(self, listoftuple)
 	#We now have a result with the linked service references. We need to replace this references with the original ones.
 	#ref_position = listoftuple[0].replace('X', '').find('R')
 	#f = open('/media/hdd/deneme.txt', 'a')
@@ -506,7 +506,7 @@ def EventInfo_gotEvent(self, what):
 					return
 		if ret:
 			if refstr and config.plugins.buyukbangpanel.linkepg.value != "2":
-				if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value  == "1":
+				if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value == "1":
 					self.dst2src = self.getEPGMap()[0]
 				if self.dst2src.has_key(refstr):
 					if self.lastdst != refstr:
@@ -613,7 +613,7 @@ class mainMenu(Screen):
 		}, -2)
 
 	def buildListEntry(self, description, image):
-		pixmap = LoadPixmap(cached=True, path="/usr/lib/enigma2/python/Plugins/Extensions/BuyukbangPanel/images/%s" %image)
+		pixmap = LoadPixmap(cached=True, path="/usr/lib/enigma2/python/Plugins/Extensions/BuyukbangPanel/images/%s" % image)
 		return((pixmap, description))
 
 	def openSelected(self):
@@ -823,7 +823,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			if config.plugins.buyukbangpanel.fixepgencoding.value != "disable" and (self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value):
 				try:
 					if not os.path.exists('/usr/share/enigma2/encoding.conf') or not os.path.exists('/usr/share/enigma2/encoding.conf_BuyukbangPanelBackup'):
-						os.system('T=/usr/share/enigma2/encoding.conf && touch $T && (! grep -q "### BUYUKBANG PANEL ENCODING FIX ###" $T || [ ! -s $T"_BuyukbangPanelBackup" ]) && cp $T $T"_BuyukbangPanelBackup" && echo "" >> $T && echo "### BUYUKBANG PANEL ENCODING FIX ###" >> $T; wget -qO- "http://en.kingofsat.net/find2.php?cl=' + config.plugins.buyukbangpanel.fixepgencoding.value +'&ordre=freq" | grep ">NID:.*>TID:" | while read line ; do TSID="$(echo "$line" | cut -d":" -f3 | cut -d"<" -f1)"; ONID="$(echo "$line" | cut -d":" -f2 | cut -d"<" -f1)"; [ "$(echo $TSID | awk "/^[0-9]+$/")" != "" ] && [ "$(echo $ONID | awk "/^[0-9]+$/")" != "" ] && ELINE="$TSID $ONID ' + config.plugins.buyukbangpanel.epgencoding.value + '" && ! grep -q "$ELINE" $T && echo "$ELINE" >> $T; done')
+						os.system('T=/usr/share/enigma2/encoding.conf && touch $T && (! grep -q "### BUYUKBANG PANEL ENCODING FIX ###" $T || [ ! -s $T"_BuyukbangPanelBackup" ]) && cp $T $T"_BuyukbangPanelBackup" && echo "" >> $T && echo "### BUYUKBANG PANEL ENCODING FIX ###" >> $T; wget -qO- "http://en.kingofsat.net/find2.php?cl=' + config.plugins.buyukbangpanel.fixepgencoding.value + '&ordre=freq" | grep ">NID:.*>TID:" | while read line ; do TSID="$(echo "$line" | cut -d":" -f3 | cut -d"<" -f1)"; ONID="$(echo "$line" | cut -d":" -f2 | cut -d"<" -f1)"; [ "$(echo $TSID | awk "/^[0-9]+$/")" != "" ] && [ "$(echo $ONID | awk "/^[0-9]+$/")" != "" ] && ELINE="$TSID $ONID ' + config.plugins.buyukbangpanel.epgencoding.value + '" && ! grep -q "$ELINE" $T && echo "$ELINE" >> $T; done')
 				except Exception, e:
 					print>>log, _("Fixing EPG encoding failed")
 					print>>log, e
@@ -1013,7 +1013,7 @@ except:
 	# computing REF DESC value).
 	# The original DM routine is a modified CRC32 standard routine,
 	# so cannot use Python standard binascii.crc32()
-	CRCTABLE=(
+	CRCTABLE = (
 		0x00000000, 0x04C11DB7, 0x09823B6E, 0x0D4326D9,
 		0x130476DC, 0x17C56B6B, 0x1A864DB2, 0x1E475005,
 		0x2608EDB8, 0x22C9F00F, 0x2F8AD6D6, 0x2B4BCB61,
@@ -1090,7 +1090,7 @@ except:
 		crc = crctable[crctype & 0x000000ffL]
 		crc = ((crc << 8) & 0xffffff00L) ^ crctable[((crc >> 24) ^ len(crcdata)) & 0x000000ffL]
 		for d in crcdata:
-		    crc=((crc << 8) & 0xffffff00L) ^ crctable[((crc >> 24) ^ ord(d)) & 0x000000ffL]
+		    crc = ((crc << 8) & 0xffffff00L) ^ crctable[((crc >> 24) ^ ord(d)) & 0x000000ffL]
 		return crc
 
 # convert time or length from datetime format to 3 bytes hex value 
@@ -1105,63 +1105,63 @@ def TL_hexconv(dt):
 
 class epgdat_class:
 	# temp files used for EPG.DAT creation
-	LAMEDB='/etc/enigma2/lamedb'
-	EPGDAT_FILENAME='epg.dat'
-	EPGDAT_TMP_FILENAME='epg.dat.tmp'
-	LB_ENDIAN='<'
-	EPG_HEADER1_channel_count=0
-	EPG_HEADER2_description_count=0
-	EPG_TOTAL_EVENTS=0
+	LAMEDB = '/etc/enigma2/lamedb'
+	EPGDAT_FILENAME = 'epg.dat'
+	EPGDAT_TMP_FILENAME = 'epg.dat.tmp'
+	LB_ENDIAN = '<'
+	EPG_HEADER1_channel_count = 0
+	EPG_HEADER2_description_count = 0
+	EPG_TOTAL_EVENTS = 0
 
-	EXCLUDED_SID=[]
+	EXCLUDED_SID = []
 
 	# initialize an empty dictionary (Python array)
 	# as total events container postprocessed
-	EPGDAT_HASH_EVENT_MEMORY_CONTAINER={}
+	EPGDAT_HASH_EVENT_MEMORY_CONTAINER = {}
 
 	# initialize an empty dictionary (Python array)
 	# as channel events container before preprocessing
-	events=[]
+	events = []
 
 	# initialize an empty dictionary (Python array)
 	# the following format can handle duplicated channel name 
 	# format: { channel_name : [ sid , sid , .... ] }
-	lamedb_dict={}
+	lamedb_dict = {}
 
 	# DVB/EPG count days with a 'modified Julian calendar' where day 1 is 17 November 1858
 	# Python can use a 'proleptic Gregorian calendar' ('import datetime') where day 1 is 01/01/0001
 	# Using 'proleptic' we can compute correct days as difference from NOW and 17/11/1858
 	#   datetime.datetime.toordinal(1858,11,17) => 678576
-	EPG_PROLEPTIC_ZERO_DAY=678576
+	EPG_PROLEPTIC_ZERO_DAY = 678576
 
 	def __init__(self,tmp_path,lamedb_path,epgdat_path):
-		self.EPGDAT_FILENAME=epgdat_path
-		self.EPGDAT_TMP_FILENAME=os.path.join(tmp_path,self.EPGDAT_TMP_FILENAME)
-		self.EPG_TMP_FD=open(self.EPGDAT_TMP_FILENAME,"wb")
-		self.LAMEDB=lamedb_path
+		self.EPGDAT_FILENAME = epgdat_path
+		self.EPGDAT_TMP_FILENAME = os.path.join(tmp_path,self.EPGDAT_TMP_FILENAME)
+		self.EPG_TMP_FD = open(self.EPGDAT_TMP_FILENAME,"wb")
+		self.LAMEDB = lamedb_path
 		self.s_B = struct.Struct("B")
 		self.s_BB = struct.Struct("BB")
 		self.s_BBB = struct.Struct("BBB")
 		self.s_b_HH = struct.Struct(">HH")
-		self.s_I = struct.Struct(self.LB_ENDIAN+"I")
-		self.s_II = struct.Struct(self.LB_ENDIAN+"II")     
-		self.s_IIII = struct.Struct(self.LB_ENDIAN+"IIII")     
+		self.s_I = struct.Struct(self.LB_ENDIAN + "I")
+		self.s_II = struct.Struct(self.LB_ENDIAN + "II")     
+		self.s_IIII = struct.Struct(self.LB_ENDIAN + "IIII")     
 		self.s_B3sBBB = struct.Struct("B3sBBB")     
 		self.s_3sBB = struct.Struct("3sBB")     
 
 	def set_endian(self,endian):
-		self.LB_ENDIAN=endian
-		self.s_I = struct.Struct(self.LB_ENDIAN+"I")
-		self.s_II = struct.Struct(self.LB_ENDIAN+"II")     
-		self.s_IIII = struct.Struct(self.LB_ENDIAN+"IIII")
+		self.LB_ENDIAN = endian
+		self.s_I = struct.Struct(self.LB_ENDIAN + "I")
+		self.s_II = struct.Struct(self.LB_ENDIAN + "II")     
+		self.s_IIII = struct.Struct(self.LB_ENDIAN + "IIII")
 
 	def set_excludedsid(self,exsidlist):
-		self.EXCLUDED_SID=exsidlist
+		self.EXCLUDED_SID = exsidlist
 
 	# assembling short description (type 0x4d , it's the Title) and compute its crc
 	def short_desc(self, s):
 		# 0x15 is UTF-8 encoding.
-		res = self.s_3sBB.pack('eng', len(s)+1, 0x15) + str(s) + "\0"
+		res = self.s_3sBB.pack('eng', len(s) + 1, 0x15) + str(s) + "\0"
 		return (crc32_dreambox(res,0x4d),res)
 
 	# assembling long description (type 0x4e) and compute its crc
@@ -1171,8 +1171,8 @@ class epgdat_class:
 		# number of descriptions start to index 0
 		num_tot_desc = (len(s) + 244) // 245
 		for i in range(num_tot_desc):
-			ssub = s[i*245:i*245+245]
-			sres = self.s_B3sBBB.pack((i << 4) + (num_tot_desc-1),'eng',0x00,len(ssub)+1,0x15) + str(ssub)
+			ssub = s[i * 245:i * 245 + 245]
+			sres = self.s_B3sBBB.pack((i << 4) + (num_tot_desc - 1),'eng',0x00,len(ssub) + 1,0x15) + str(ssub)
 			r.append((crc32_dreambox(sres,0x4e), sres))
 		return r
 
@@ -1223,7 +1223,7 @@ class epgdat_class:
 					# DESCRIPTION HEADER (2 int) will be computed at the end just before EPG.DAT write
 					# because it need the total number of the same description called by many channel section
 					#save_event(short_d[0],[pack_1,1])
-					self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[short_d[0]]=[pack_1,1]
+					self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[short_d[0]] = [pack_1,1]
 					self.EPG_HEADER2_description_count += 1
 				else:
 					#increment_event(short_d[0])
@@ -1241,18 +1241,18 @@ class epgdat_class:
 						# DESCRIPTION HEADER (2 int) will be computed at the end just before EPG.DAT write
 						# because it need the total number of the same description called by different channel section
 						#save_event(long_d[i][0],[pack_1,1])
-						self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[desc[0]]=[pack_1,1]
+						self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[desc[0]] = [pack_1,1]
 					else:
 						#increment_event(long_d[i][0])
 						self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[desc[0]][1] += 1
 				# **** (2) : have REF DESC and now can create EVENT HEADER / DATA ****
 				# EVENT HEADER (2 bytes: 0x01 , 10 bytes + number of CRC32 * 4)
-				pack_1=s_BB.pack(0x01,0x0a + EPG_EVENT_HEADER_datasize)
+				pack_1 = s_BB.pack(0x01,0x0a + EPG_EVENT_HEADER_datasize)
 				self.EPG_TMP_FD.write(pack_1)
 				# extract date and time from <event>
 				# unix format (second since 1970) and already GMT corrected
-				event_time_HMS=datetime.utcfromtimestamp(event[0])
-				event_length_HMS=datetime.utcfromtimestamp(event[1])
+				event_time_HMS = datetime.utcfromtimestamp(event[0])
+				event_length_HMS = datetime.utcfromtimestamp(event[1])
 				# epg.dat date is = (proleptic date - epg_zero_day)
 				dvb_date = event_time_HMS.toordinal() - self.EPG_PROLEPTIC_ZERO_DAY            
 				# EVENT DATA
@@ -1265,36 +1265,36 @@ class epgdat_class:
 				pack_4 = s_I.pack(short_d[0]) # REF DESC short (title)            
 				for d in long_d:
 					pack_4 += s_I.pack(d[0]) # REF DESC long
-				self.EPG_TMP_FD.write(pack_1+pack_2+pack_3+pack_4)
+				self.EPG_TMP_FD.write(pack_1 + pack_2 + pack_3 + pack_4)
 		# reset again event container
 		self.EPG_TOTAL_EVENTS += len(self.events)
-		self.events=[]
+		self.events = []
 
 	def final_process(self):
 		if self.EPG_TOTAL_EVENTS > 0:
 			self.EPG_TMP_FD.close()
-			epgdat_fd=open(self.EPGDAT_FILENAME,"wb")
+			epgdat_fd = open(self.EPGDAT_FILENAME,"wb")
 			# HEADER 1
-			pack_1=struct.pack(self.LB_ENDIAN+"I13sI",0x98765432,'ENIGMA_EPG_V7',self.EPG_HEADER1_channel_count)
+			pack_1 = struct.pack(self.LB_ENDIAN + "I13sI",0x98765432,'ENIGMA_EPG_V7',self.EPG_HEADER1_channel_count)
 			epgdat_fd.write(pack_1)
 			# write first EPG.DAT section
-			EPG_TMP_FD=open(self.EPGDAT_TMP_FILENAME,"rb")
+			EPG_TMP_FD = open(self.EPGDAT_TMP_FILENAME,"rb")
 			while True:
-				pack_1=EPG_TMP_FD.read(4096)
+				pack_1 = EPG_TMP_FD.read(4096)
 				if not pack_1:
 					break
 				epgdat_fd.write(pack_1)
 			EPG_TMP_FD.close()
 			# HEADER 2
 			s_ii = self.s_II     
-			pack_1=self.s_I.pack(self.EPG_HEADER2_description_count)
+			pack_1 = self.s_I.pack(self.EPG_HEADER2_description_count)
 			epgdat_fd.write(pack_1)
 			# event MUST BE WRITTEN IN ASCENDING ORDERED using HASH CODE as index
 			for temp in sorted(self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.keys()):
-				pack_2=self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[temp]
+				pack_2 = self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[temp]
 				#pack_1=struct.pack(LB_ENDIAN+"II",int(temp,16),pack_2[1])
-				pack_1=s_ii.pack(temp,pack_2[1])
-				epgdat_fd.write(pack_1+pack_2[0])
+				pack_1 = s_ii.pack(temp,pack_2[1])
+				epgdat_fd.write(pack_1 + pack_2[0])
 			epgdat_fd.close()
 		# *** cleanup **
 		if os.path.exists(self.EPGDAT_TMP_FILENAME):
@@ -1433,7 +1433,7 @@ class AutoStartTimer:
 			#Invalid clock fix starts (for scheduled epg copy and scheduled operations)
 			if now < 1300000000 and next > 420 and (not config.plugins.buyukbangpanel.periodic.value or self.firstPeriodicEPGCopy == 0) and (config.plugins.buyukbangpanel.scheduled.value or config.plugins.buyukbangpanel.scheduledoperation.value != "0"):
 				# If calculated next wake time is smaller than 7 minutes than replace it with 3 minutes 1970 time check
-				next=180
+				next = 180
 				scheduledOperation = "CHECKCORRECTTIME"
 			#Invalid clock fix ends
 			self.timer.startLongTimer(next)
@@ -1533,7 +1533,7 @@ def autostart(reason, session=None, **kwargs):
 				if os.path.exists('/usr/share/enigma2/encoding.conf'):
 					mtime = os.path.getmtime('/usr/share/enigma2/encoding.conf')
 				if not os.path.exists('/usr/share/enigma2/encoding.conf_BuyukbangPanelBackup') or not mtime or (mtime + 86400 < now):
-					os.system('T=/usr/share/enigma2/encoding.conf && touch $T && (! grep -q "### BUYUKBANG PANEL ENCODING FIX ###" $T || [ ! -s $T"_BuyukbangPanelBackup" ]) && cp $T $T"_BuyukbangPanelBackup" && echo "" >> $T && echo "### BUYUKBANG PANEL ENCODING FIX ###" >> $T; nohup wget -qO- "http://en.kingofsat.net/find2.php?cl=' + config.plugins.buyukbangpanel.fixepgencoding.value +'&ordre=freq" | grep ">NID:.*>TID:" | while read line ; do TSID="$(echo "$line" | cut -d":" -f3 | cut -d"<" -f1)"; ONID="$(echo "$line" | cut -d":" -f2 | cut -d"<" -f1)"; [ "$(echo $TSID | awk "/^[0-9]+$/")" != "" ] && [ "$(echo $ONID | awk "/^[0-9]+$/")" != "" ] && ELINE="$TSID $ONID ' + config.plugins.buyukbangpanel.epgencoding.value + '" && ! grep -q "$ELINE" $T && echo "$ELINE" >> $T; done &')
+					os.system('T=/usr/share/enigma2/encoding.conf && touch $T && (! grep -q "### BUYUKBANG PANEL ENCODING FIX ###" $T || [ ! -s $T"_BuyukbangPanelBackup" ]) && cp $T $T"_BuyukbangPanelBackup" && echo "" >> $T && echo "### BUYUKBANG PANEL ENCODING FIX ###" >> $T; nohup wget -qO- "http://en.kingofsat.net/find2.php?cl=' + config.plugins.buyukbangpanel.fixepgencoding.value + '&ordre=freq" | grep ">NID:.*>TID:" | while read line ; do TSID="$(echo "$line" | cut -d":" -f3 | cut -d"<" -f1)"; ONID="$(echo "$line" | cut -d":" -f2 | cut -d"<" -f1)"; [ "$(echo $TSID | awk "/^[0-9]+$/")" != "" ] && [ "$(echo $ONID | awk "/^[0-9]+$/")" != "" ] && ELINE="$TSID $ONID ' + config.plugins.buyukbangpanel.epgencoding.value + '" && ! grep -q "$ELINE" $T && echo "$ELINE" >> $T; done &')
 			except Exception, e:
 				print>>log, _("Fixing EPG encoding failed")
 				print>>log, e
