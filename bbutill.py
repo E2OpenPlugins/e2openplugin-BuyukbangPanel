@@ -13,6 +13,7 @@ logfile = StringIO()
 # Need to make our operations thread-safe.
 mutex = threading.Lock() 
 
+
 def write(data):
 	timestamp = time.strftime("%Y.%m.%d %H:%M:%S", time.localtime(time.time()))
 	dataLength = len(data)
@@ -28,6 +29,7 @@ def write(data):
 	finally:
 		mutex.release()
 	sys.stdout.write(data)
+
 
 def getvalue():
 	mutex.acquire()

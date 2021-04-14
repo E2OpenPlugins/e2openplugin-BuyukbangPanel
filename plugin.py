@@ -59,6 +59,7 @@ from Components.Language import language
 from os import environ, popen
 from Tools.Directories import resolveFilename, SCOPE_LANGUAGE, SCOPE_PLUGINS
 
+
 def localeInit():
 	lang = language.getLanguage()
 	environ["LANGUAGE"] = lang[:2]
@@ -66,11 +67,13 @@ def localeInit():
 	gettext.textdomain("enigma2")
 	gettext.bindtextdomain("BuyukbangPanel", "%s%s" % (resolveFilename(SCOPE_PLUGINS), "Extensions/BuyukbangPanel/locale/"))
 
+
 def _(txt):
 	t = gettext.dgettext("BuyukbangPanel", txt)
 	if t == txt:
 		t = gettext.gettext(txt)
 	return t
+
 
 localeInit()
 language.addCallback(localeInit)
@@ -133,6 +136,8 @@ reboot = False
 lastrestartallowedtime = int(config.plugins.buyukbangpanel.lastcopyepgrestarttime.value)
 
 ###################################### GETEPGMAP ###################################
+
+
 def getEPGMap(self):
 	dst2src = {}
 	src2dst = {}
@@ -174,10 +179,13 @@ def getEPGMap(self):
 					#f.close()
 	return (dst2src, src2dst)
 
+
 eEPGCache.getEPGMap = getEPGMap
 EventInfo.getEPGMap = getEPGMap
 
 ###################################### COPYEPG ###################################
+
+
 def copyEpg(self):
 	global timerEpgCopyRunning, manualEpgCopyRunning, scheduledOperation, reboot
 	epgpath = None
@@ -380,6 +388,7 @@ def copyEpg(self):
 ##################### LOOKUPEVENTTIME #####################
 baseeEPGCache_lookupEventTime = eEPGCache.lookupEventTime
 
+
 def eEPGCache_lookupEventTime(self, ref, start_time, direction=None):
 	if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value == "1":
 		self.dst2src = self.getEPGMap()[0]
@@ -392,6 +401,7 @@ def eEPGCache_lookupEventTime(self, ref, start_time, direction=None):
 		return baseeEPGCache_lookupEventTime(self, ref, start_time, 0)
 	else:
 		return baseeEPGCache_lookupEventTime(self, ref, start_time, direction)
+
 
 if config.plugins.buyukbangpanel.linkepg.value != "2":
 	eEPGCache.lookupEventTime = eEPGCache_lookupEventTime
@@ -406,6 +416,7 @@ def eEPGCache_lookupeventid(self, ref, eventid):
 	if self.dst2src.has_key(ref.toString()):
 		ref = self.dst2src[ref.toString()][3]
 	return baseeEPGCache_lookupeventid(self, ref, eventid)
+
 
 if config.plugins.buyukbangpanel.linkepg.value != "2":
 	eEPGCache.lookupeventid = eEPGCache_lookupeventid
@@ -441,6 +452,8 @@ baseeEPGCache_lookupEvent = eEPGCache.lookupEvent
 #      when type is eventid it is the event_id
 #      when type is time then it is the start_time ( -1 for now_time )
 #   the fourth is the end_time .. ( optional .. for query all events in time range)
+
+
 def eEPGCache_lookupEvent(self, listoftuple, buildFunc=None):
 	resultList = {}
 	if not hasattr(eEPGCache, 'dst2src') or not hasattr(eEPGCache, 'src2dst') or config.plugins.buyukbangpanel.readepgboquet.value == "1":
@@ -475,12 +488,14 @@ def eEPGCache_lookupEvent(self, listoftuple, buildFunc=None):
 	#			resultList[i] = tuple(tmpresultList)
 	return resultList
 
+
 if config.plugins.buyukbangpanel.linkepg.value == "1":
 	eEPGCache.lookupEvent = eEPGCache_lookupEvent
 
 
 ########################### INFOBAR FIX STARTS  ###########################
 EventInfo.lastdst = None
+
 
 def EventInfo_gotEvent(self, what):
 	refstr = None
@@ -516,6 +531,7 @@ def EventInfo_gotEvent(self, what):
 			self.lastdst = None
 			self.changed((self.CHANGED_ALL,))
 
+
 if config.plugins.buyukbangpanel.filterdummy.value:
 	EventInfo.gotEvent = EventInfo_gotEvent
 
@@ -545,6 +561,7 @@ def InfoBarEPG_openEventView(self):
 		print "No epg for the service available. So we show multiepg instead of eventinfo"
 		self.openMultiServiceEPG(False)
 
+
 if config.plugins.buyukbangpanel.filterdummy.value:
 	InfoBarEPG.openEventView = InfoBarEPG_openEventView
 
@@ -567,10 +584,13 @@ def importEvents(self, services, events):
 	for service in services:
 		self.epgcache.importEvent(service, events)
 
+
 if hasattr(eEPGCache, 'importEvent') and not hasattr(eEPGCache, 'importEvents'):
 	eEPGCache.importEvents = importEvents
 
 ###################################### MAIN SCREEN ###################################
+
+
 class mainMenu(Screen):
 	skin = """
 	<screen position="center,center" size="640,400" title="Buyukbang Panel v1.4.2             buyukbang.blogspot.com">
@@ -639,6 +659,7 @@ class mainMenu(Screen):
 			self.session.open(LogScreen)
 		elif menuIndex == 9:
 			self.session.open(EPGMainSetup)
+
 	def quit(self):
 		self.close()
 
@@ -880,6 +901,8 @@ class EPGMainSetup(ConfigListScreen, Screen):
 		self.update()
 
 ###################################### LOG SCREEN ###################################
+
+
 class LogScreen(Screen):
 	skin = """
 	<screen position="center,center" size="640,400" title="Buyukbang Panel v1.4.2             buyukbang.blogspot.com" >
@@ -942,6 +965,8 @@ class LogScreen(Screen):
 		self.close(False)
 
 ############################## EPG FILE OPERATIONS SCREEN ###########################
+
+
 class EPGFileOperationsScreen(Screen):
 	skin = """
 	<screen position="center,center" size="640,400" title="Buyukbang Panel v1.4.2             buyukbang.blogspot.com" >
@@ -994,10 +1019,12 @@ class EPGFileOperationsScreen(Screen):
 def main(session, **kwargs):
 	session.openWithCallback(doneConfiguring(session), mainMenu)
 
+
 def doneConfiguring(self):
 	global autoStartTimer
 	if autoStartTimer is not None:
 		autoStartTimer.update()
+
 
 ###################################### EPGDAT ###################################
 import sys
@@ -1083,6 +1110,7 @@ except:
 	# "crcdata" is the description string
 	# "crctype" is the description type (1 byte 0x4d or 0x4e)
 	# !!!!!!!!! IT'S VERY TIME CONSUMING !!!!!!!!!
+
 	def crc32_dreambox(crcdata, crctype, crctable=CRCTABLE):
 		# ML Optimized: local CRCTABLE (locals are faster), remove self, remove code that has no effect, faster loop    
 		#crc=0x00000000L
@@ -1095,6 +1123,8 @@ except:
 
 # convert time or length from datetime format to 3 bytes hex value 
 # i.e. 20:25:30 -> 0x20 , 0x25 , 0x30
+
+
 def TL_hexconv(dt):
 	return (
 		(dt.hour % 10) + (16 * (dt.hour / 10)),
@@ -1486,6 +1516,8 @@ class AutoStartTimer:
 			self.session.open(TryQuitMainloop, int(config.plugins.buyukbangpanel.restarttype.value))
 
 ###################################### PLUGIN MAIN FUNCTIONS ###################################
+
+
 def autostart(reason, session=None, **kwargs):
 	"called with reason=1 to during shutdown, with reason=0 at startup?"
 	global autoStartTimer
@@ -1550,8 +1582,11 @@ def autostart(reason, session=None, **kwargs):
 		print>>log, _("Stop")
 
 # we need this helper function to identify the descriptor
+
+
 def extensionsmenu(session, **kwargs):
 	main(session, **kwargs)
+
 
 def housekeepingExtensionsmenu(el):
 	try:
@@ -1563,9 +1598,11 @@ def housekeepingExtensionsmenu(el):
 		print>>log, _("Failed to update extensions menu")
 		print>>log, e
 
+
 description = _("Miscellaneous tools for Enigma2")
 config.plugins.buyukbangpanel.showinextensions.addNotifier(housekeepingExtensionsmenu, initial_call=False, immediate_feedback=False)
 extDescriptor = PluginDescriptor(name="Buyukbang Panel", description=description, where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=extensionsmenu)
+
 
 def Plugins(**kwargs):
 	result = [
