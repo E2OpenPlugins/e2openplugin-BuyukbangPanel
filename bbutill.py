@@ -11,7 +11,7 @@ import threading
 import time
 logfile = StringIO()
 # Need to make our operations thread-safe.
-mutex = threading.Lock() 
+mutex = threading.Lock()
 
 
 def write(data):
@@ -40,4 +40,4 @@ def getvalue():
 		tail = logfile.read(pos)
 	finally:
 		mutex.release()
-	return head + tail 
+	return head + tail

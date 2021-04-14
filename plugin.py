@@ -126,7 +126,7 @@ config.plugins.buyukbangpanel.startuptostandby = ConfigSelection(choices=[("0", 
 from Plugins.Plugin import PluginDescriptor
 
 # Global variable
-_session = None 
+_session = None
 autoStartTimer = None
 autostartExecuted = None
 timerEpgCopyRunning = False
@@ -604,11 +604,11 @@ class mainMenu(Screen):
 					"itemHeight": 40
 				}
 			</convert>
-		</widget>	
+		</widget>
 	</screen>"""
-	
+
 	def __init__(self, session, args=0):
-		
+
 		self.session = session
 		self.setup_title = _("Buyukbang Panel v1.4.2             buyukbang.blogspot.com")
 		Screen.__init__(self, session)
@@ -669,16 +669,16 @@ class EPGMainSetup(ConfigListScreen, Screen):
 	<screen position="center,center" size="640,400" title="Buyukbang Panel v1.4.2             buyukbang.blogspot.com" >
 		<ePixmap name="red"    position="0,0"   zPosition="2" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
 		<ePixmap name="green"  position="160,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
-		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" /> 
-		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" /> 
-	
-		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
-		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
+		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
+		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
+
+		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
+		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_yellow" position="320,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_blue" position="480,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
-	
+
 		<widget name="config" position="10,60" size="620,300" scrollbarMode="showOnDemand" />
-	
+
 		<ePixmap alphatest="on" pixmap="skin_default/icons/clock.png" position="560,378" size="14,14" zPosition="3"/>
 		<widget font="Regular;18" halign="left" position="585,375" render="Label" size="55,20" source="global.CurrentTime" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
@@ -686,7 +686,7 @@ class EPGMainSetup(ConfigListScreen, Screen):
 		<widget name="statusbar" position="10,375" size="530,20" font="Regular;18" />
 		<widget name="status" position="10,300" size="540,60" font="Regular;20" />
 	</screen>"""
-	
+
 	def __init__(self, session, args=0):
 		global menuIndex
 		self.session = session
@@ -753,7 +753,7 @@ class EPGMainSetup(ConfigListScreen, Screen):
 			"log": self.yellowAction,
 		}, -2)
 		self.onChangedEntry = []
-		
+
 		self.oldscheduled = config.plugins.buyukbangpanel.scheduled.value
 		self.oldperiodic = config.plugins.buyukbangpanel.periodic.value
 		self.oldstartupcopydelay = config.plugins.buyukbangpanel.startupcopydelay.value
@@ -784,14 +784,14 @@ class EPGMainSetup(ConfigListScreen, Screen):
 
 	def getCurrentEntry(self):
 		return self["config"].getCurrent()[0]
-		
+
 	def getCurrentValue(self):
 		return str(self["config"].getCurrent()[1].getText())
-		
+
 	def createSummary(self):
 		from Screens.Setup import SetupSummary
 		return SetupSummary
-		
+
 	def selectionChanged(self):
 		self["statusbar"].setText(" ")
 
@@ -865,7 +865,7 @@ class EPGMainSetup(ConfigListScreen, Screen):
 		#quitMainloop(5)
 		if answer is True:
 			self.session.open(TryQuitMainloop, int(config.plugins.buyukbangpanel.restarttype.value))
-		
+
 	def cancel(self):
 		global manualEpgCopyRunning
 		for x in self["config"].list:
@@ -908,19 +908,19 @@ class LogScreen(Screen):
 	<screen position="center,center" size="640,400" title="Buyukbang Panel v1.4.2             buyukbang.blogspot.com" >
 		<ePixmap name="red"    position="0,0"   zPosition="2" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
 		<ePixmap name="green"  position="160,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
-		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" /> 
-		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" /> 
+		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
+		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
 
-		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
-		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
+		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
+		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_yellow" position="320,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_blue" position="480,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
-	
+
 		<ePixmap alphatest="on" pixmap="skin_default/icons/clock.png" position="560,378" size="14,14" zPosition="3"/>
 		<widget font="Regular;18" halign="left" position="585,375" render="Label" size="55,20" source="global.CurrentTime" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
-	
+
 		<widget name="list" position="10,60" size="620,320" />
 	</screen>"""
 
@@ -972,14 +972,14 @@ class EPGFileOperationsScreen(Screen):
 	<screen position="center,center" size="640,400" title="Buyukbang Panel v1.4.2             buyukbang.blogspot.com" >
 		<ePixmap name="red"    position="0,0"   zPosition="2" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
 		<ePixmap name="green"  position="160,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
-		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" /> 
-		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" /> 
+		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
+		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
 
-		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
-		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
+		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
+		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_yellow" position="320,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_blue" position="480,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
-	
+
 		<ePixmap alphatest="on" pixmap="skin_default/icons/clock.png" position="560,378" size="14,14" zPosition="3"/>
 		<widget font="Regular;18" halign="left" position="585,375" render="Label" size="55,20" source="global.CurrentTime" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
@@ -1112,7 +1112,7 @@ except:
 	# !!!!!!!!! IT'S VERY TIME CONSUMING !!!!!!!!!
 
 	def crc32_dreambox(crcdata, crctype, crctable=CRCTABLE):
-		# ML Optimized: local CRCTABLE (locals are faster), remove self, remove code that has no effect, faster loop    
+		# ML Optimized: local CRCTABLE (locals are faster), remove self, remove code that has no effect, faster loop
 		#crc=0x00000000L
 		#crc=((crc << 8 ) & 0xffffff00L) ^ crctable[((crc >> 24) ^ crctype) & 0x000000ffL ]
 		crc = crctable[crctype & 0x000000ffL]
@@ -1121,7 +1121,7 @@ except:
 		    crc = ((crc << 8) & 0xffffff00L) ^ crctable[((crc >> 24) ^ ord(d)) & 0x000000ffL]
 		return crc
 
-# convert time or length from datetime format to 3 bytes hex value 
+# convert time or length from datetime format to 3 bytes hex value
 # i.e. 20:25:30 -> 0x20 , 0x25 , 0x30
 
 
@@ -1154,7 +1154,7 @@ class epgdat_class:
 	events = []
 
 	# initialize an empty dictionary (Python array)
-	# the following format can handle duplicated channel name 
+	# the following format can handle duplicated channel name
 	# format: { channel_name : [ sid , sid , .... ] }
 	lamedb_dict = {}
 
@@ -1174,15 +1174,15 @@ class epgdat_class:
 		self.s_BBB = struct.Struct("BBB")
 		self.s_b_HH = struct.Struct(">HH")
 		self.s_I = struct.Struct(self.LB_ENDIAN + "I")
-		self.s_II = struct.Struct(self.LB_ENDIAN + "II")     
-		self.s_IIII = struct.Struct(self.LB_ENDIAN + "IIII")     
-		self.s_B3sBBB = struct.Struct("B3sBBB")     
-		self.s_3sBB = struct.Struct("3sBB")     
+		self.s_II = struct.Struct(self.LB_ENDIAN + "II")
+		self.s_IIII = struct.Struct(self.LB_ENDIAN + "IIII")
+		self.s_B3sBBB = struct.Struct("B3sBBB")
+		self.s_3sBB = struct.Struct("3sBB")
 
 	def set_endian(self, endian):
 		self.LB_ENDIAN = endian
 		self.s_I = struct.Struct(self.LB_ENDIAN + "I")
-		self.s_II = struct.Struct(self.LB_ENDIAN + "II")     
+		self.s_II = struct.Struct(self.LB_ENDIAN + "II")
 		self.s_IIII = struct.Struct(self.LB_ENDIAN + "IIII")
 
 	def set_excludedsid(self, exsidlist):
@@ -1212,7 +1212,7 @@ class epgdat_class:
 
 	def importEvents(self, services, events):
 		# We need to combine short and long descriptions since add_event function has only one description input parameter
-		# def add_event(self, starttime, duration, title, description):		
+		# def add_event(self, starttime, duration, title, description):
 		# Event tuple structure is BDTSE0 ==> B = Event Begin Time, D = Event Duration, T = Event Title, S = Event Short Description, E = Event Extended Description, 0 = PyLong(0)
 		for event in events:
 			desc = None
@@ -1284,15 +1284,15 @@ class epgdat_class:
 				event_time_HMS = datetime.utcfromtimestamp(event[0])
 				event_length_HMS = datetime.utcfromtimestamp(event[1])
 				# epg.dat date is = (proleptic date - epg_zero_day)
-				dvb_date = event_time_HMS.toordinal() - self.EPG_PROLEPTIC_ZERO_DAY            
+				dvb_date = event_time_HMS.toordinal() - self.EPG_PROLEPTIC_ZERO_DAY
 				# EVENT DATA
 				# simply create an incremental ID,  starting from '1'
 				# event_id appears to be per channel, so this should be okay.
 				EPG_EVENT_DATA_id += 1
 				pack_1 = self.s_b_HH.pack(EPG_EVENT_DATA_id, dvb_date) # ID and DATE , always in BIG_ENDIAN
 				pack_2 = s_BBB.pack(*TL_hexconv(event_time_HMS)) # START TIME
-				pack_3 = s_BBB.pack(*TL_hexconv(event_length_HMS)) # LENGTH 
-				pack_4 = s_I.pack(short_d[0]) # REF DESC short (title)            
+				pack_3 = s_BBB.pack(*TL_hexconv(event_length_HMS)) # LENGTH
+				pack_4 = s_I.pack(short_d[0]) # REF DESC short (title)
 				for d in long_d:
 					pack_4 += s_I.pack(d[0]) # REF DESC long
 				self.EPG_TMP_FD.write(pack_1 + pack_2 + pack_3 + pack_4)
@@ -1316,7 +1316,7 @@ class epgdat_class:
 				epgdat_fd.write(pack_1)
 			EPG_TMP_FD.close()
 			# HEADER 2
-			s_ii = self.s_II     
+			s_ii = self.s_II
 			pack_1 = self.s_I.pack(self.EPG_HEADER2_description_count)
 			epgdat_fd.write(pack_1)
 			# event MUST BE WRITTEN IN ASCENDING ORDERED using HASH CODE as index
@@ -1344,7 +1344,7 @@ class AutoStartTimer:
 		self.oldinterval = 0
 		self.firstPeriodicEPGCopy = 1
 		self.session = session
-		self.timer = enigma.eTimer() 
+		self.timer = enigma.eTimer()
 		self.timer.callback.append(self.onTimer)
 		self.update()
 
@@ -1390,7 +1390,7 @@ class AutoStartTimer:
 			if wakeTime == -1 or self.periodictime < wakeTime:
 				wakeTime = self.periodictime
 				scheduledOperation = "PERIODIC"
-				
+
 		if config.plugins.buyukbangpanel.scheduledoperation.value != "0":
 			scheduledoperationtimevalue = config.plugins.buyukbangpanel.scheduledoperationtime.value
 			self.scheduledoperationtime = int(time.mktime((now.tm_year, now.tm_mon, now.tm_mday, scheduledoperationtimevalue[0], scheduledoperationtimevalue[1], 0, 0, now.tm_yday, now.tm_isdst)))
