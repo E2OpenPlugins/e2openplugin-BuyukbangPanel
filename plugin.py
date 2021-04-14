@@ -96,7 +96,7 @@ config.plugins.buyukbangpanel.linkepg = ConfigSelection(choices=[("0", _("Only i
 config.plugins.buyukbangpanel.readepgboquet = ConfigSelection(choices=[("0", _("At startup <Changes requires restart>")), ("1", _("In realtime <Uses more CPU>"))], default="0")
 config.plugins.buyukbangpanel.filterdummy = ConfigEnableDisable(default=True)
 config.plugins.buyukbangpanel.dummystring = ConfigText(default='Current,Next,dummyEventName,.,', fixed_size=False)
-config.plugins.buyukbangpanel.epgencoding = ConfigSelection(choices=[("ISO6397", _("ISO6397")),("ISO8859-1", _("ISO8859-1")),("ISO8859-2", _("ISO8859-2")), ("ISO8859-3", _("ISO8859-3")), ("ISO8859-4", _("ISO8859-4")), ("ISO8859-5", _("ISO8859-5")), ("ISO8859-6", _("ISO8859-6")), ("ISO8859-7", _("ISO8859-7")), ("ISO8859-8", _("ISO8859-8")), ("ISO8859-9", _("ISO8859-9")), ("ISO8859-10", _("ISO8859-10")), ("ISO8859-11", _("ISO8859-11")), ("ISO8859-13", _("ISO8859-13")), ("ISO8859-14", _("ISO8859-14")), ("ISO8859-15", _("ISO8859-15")), ("ISO8859-16", _("ISO8859-16"))], default="ISO8859-9")
+config.plugins.buyukbangpanel.epgencoding = ConfigSelection(choices=[("ISO6397", _("ISO6397")), ("ISO8859-1", _("ISO8859-1")), ("ISO8859-2", _("ISO8859-2")), ("ISO8859-3", _("ISO8859-3")), ("ISO8859-4", _("ISO8859-4")), ("ISO8859-5", _("ISO8859-5")), ("ISO8859-6", _("ISO8859-6")), ("ISO8859-7", _("ISO8859-7")), ("ISO8859-8", _("ISO8859-8")), ("ISO8859-9", _("ISO8859-9")), ("ISO8859-10", _("ISO8859-10")), ("ISO8859-11", _("ISO8859-11")), ("ISO8859-13", _("ISO8859-13")), ("ISO8859-14", _("ISO8859-14")), ("ISO8859-15", _("ISO8859-15")), ("ISO8859-16", _("ISO8859-16"))], default="ISO8859-9")
 try: #some old images may not have this key and crashes. "Try" fixes this possible bug.
 	if config.osd.language.value == "tr_TR":
 		config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices=[("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default="tur")
@@ -269,7 +269,7 @@ def copyEpg(self):
 			services = serviceHandler.list(eServiceReference(bouquet[0]))
 			channels = services and services.getContent("RSN", True)
 			# Add one more dummy seperator at the end. So there will be no need to duplicate looped importEvents code part for just the last item.
-			channels.append([None,"1:64:",None])
+			channels.append([None, "1:64:", None])
 	srcChannel = None
 	dstChannelList = []
 	eventlist = {}
@@ -315,7 +315,7 @@ def copyEpg(self):
 			#B = Event Begin Time, D = Event Duration, T = Event Title, S = Event Short Description, E = Event Extended Description, 0 = PyLong(0)
 			eventlist = epgcache.lookupEvent(['BDTSE0', (channel[1], -1, -1, -1)])
 			for i in range(len(eventlist)):
-				eventlist[i] = (eventlist[i][0] + timeAdjustment,eventlist[i][1],eventlist[i][2],eventlist[i][3],eventlist[i][4],eventlist[i][5])
+				eventlist[i] = (eventlist[i][0] + timeAdjustment, eventlist[i][1], eventlist[i][2], eventlist[i][3], eventlist[i][4], eventlist[i][5])
 		else:
 			dstChannelList.append(channel[1])
 	if epgdat is not None:
@@ -643,7 +643,7 @@ class mainMenu(Screen):
 		self.close()
 
 
-class EPGMainSetup(ConfigListScreen,Screen):
+class EPGMainSetup(ConfigListScreen, Screen):
 	skin = """
 	<screen position="center,center" size="640,400" title="Buyukbang Panel v1.4.2             buyukbang.blogspot.com" >
 		<ePixmap name="red"    position="0,0"   zPosition="2" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
@@ -777,7 +777,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 	def save_pre(self):
 		if config.plugins.buyukbangpanel.fixepgencoding.value != "disable" \
 		and (self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value):
-			encodingConfirmation = self.session.openWithCallback(self.save,MessageBox,_("Buyukbang Panel\n\nUpdating encoding settings requires internet connection to query Kingofsat and this may take a few minutes.\n\nDo you want to continue?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
+			encodingConfirmation = self.session.openWithCallback(self.save, MessageBox, _("Buyukbang Panel\n\nUpdating encoding settings requires internet connection to query Kingofsat and this may take a few minutes.\n\nDo you want to continue?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 			encodingConfirmation.setTitle(_("Continue?"))
 		else:
 			self.save(True)
@@ -814,7 +814,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			if self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value \
 			or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value:
 				try:
-					os.rename('/usr/share/enigma2/encoding.conf_BuyukbangPanelBackup','/usr/share/enigma2/encoding.conf')
+					os.rename('/usr/share/enigma2/encoding.conf_BuyukbangPanelBackup', '/usr/share/enigma2/encoding.conf')
 					#Assure that encoding.conf is updated with the new encoding
 					self.oldfixepgencoding = "disable"
 				except Exception, e:
@@ -835,7 +835,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			or self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value \
 			or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value and config.plugins.buyukbangpanel.fixepgencoding.value != "disable" \
 			or self.oldhidezaperrors != config.plugins.buyukbangpanel.hidezaperrors.value:
-				restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to apply the new settings.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
+				restartConfirmation = self.session.openWithCallback(self.restartEnigma, MessageBox, _("Buyukbang Panel\n\nRestart needed to apply the new settings.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 				restartConfirmation.setTitle(_("Restart now?"))
 
 	def restartEnigma(self, answer):
@@ -850,7 +850,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 		for x in self["config"].list:
 			x[1].cancel()
 		manualEpgCopyRunning = False
-		self.close(False,self.session)
+		self.close(False, self.session)
 
 	def yellowAction(self):
 		self.session.open(LogScreen)
@@ -859,7 +859,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 		global reboot
 		if menuIndex == 0:
 			if twisted.python.runtime.platform.supportsThreads():
-				threads.deferToThread(self.copyEpg,self).addCallback(lambda ignore: self.afterCopyEPG())
+				threads.deferToThread(self.copyEpg, self).addCallback(lambda ignore: self.afterCopyEPG())
 			else:
 				self.copyEpg(self)
 				self.afterCopyEPG()
@@ -867,7 +867,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 	def onTimer(self):
 		self.timer.stop()
 		if twisted.python.runtime.platform.supportsThreads():
-			threads.deferToThread(self.copyEpg,self).addCallback(lambda ignore: self.afterCopyEPG())
+			threads.deferToThread(self.copyEpg, self).addCallback(lambda ignore: self.afterCopyEPG())
 		else:
 			self.copyEpg(self)
 			self.afterCopyEPG()
@@ -875,7 +875,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 	def afterCopyEPG(self):
 		global reboot
 		if reboot:
-			restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
+			restartConfirmation = self.session.openWithCallback(self.restartEnigma, MessageBox, _("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 			restartConfirmation.setTitle(_("Restart now?"))
 		self.update()
 
@@ -1007,7 +1007,7 @@ from datetime import datetime
 
 try:
 	import dreamcrc
-	crc32_dreambox = lambda d,t: dreamcrc.crc32(d,t) & 0xffffffff
+	crc32_dreambox = lambda d, t: dreamcrc.crc32(d, t) & 0xffffffff
 except:
 	# this table is used by CRC32 routine below (used by Dreambox for
 	# computing REF DESC value).
@@ -1134,10 +1134,10 @@ class epgdat_class:
 	#   datetime.datetime.toordinal(1858,11,17) => 678576
 	EPG_PROLEPTIC_ZERO_DAY = 678576
 
-	def __init__(self,tmp_path,lamedb_path,epgdat_path):
+	def __init__(self, tmp_path, lamedb_path, epgdat_path):
 		self.EPGDAT_FILENAME = epgdat_path
-		self.EPGDAT_TMP_FILENAME = os.path.join(tmp_path,self.EPGDAT_TMP_FILENAME)
-		self.EPG_TMP_FD = open(self.EPGDAT_TMP_FILENAME,"wb")
+		self.EPGDAT_TMP_FILENAME = os.path.join(tmp_path, self.EPGDAT_TMP_FILENAME)
+		self.EPG_TMP_FD = open(self.EPGDAT_TMP_FILENAME, "wb")
 		self.LAMEDB = lamedb_path
 		self.s_B = struct.Struct("B")
 		self.s_BB = struct.Struct("BB")
@@ -1149,31 +1149,31 @@ class epgdat_class:
 		self.s_B3sBBB = struct.Struct("B3sBBB")     
 		self.s_3sBB = struct.Struct("3sBB")     
 
-	def set_endian(self,endian):
+	def set_endian(self, endian):
 		self.LB_ENDIAN = endian
 		self.s_I = struct.Struct(self.LB_ENDIAN + "I")
 		self.s_II = struct.Struct(self.LB_ENDIAN + "II")     
 		self.s_IIII = struct.Struct(self.LB_ENDIAN + "IIII")
 
-	def set_excludedsid(self,exsidlist):
+	def set_excludedsid(self, exsidlist):
 		self.EXCLUDED_SID = exsidlist
 
 	# assembling short description (type 0x4d , it's the Title) and compute its crc
 	def short_desc(self, s):
 		# 0x15 is UTF-8 encoding.
 		res = self.s_3sBB.pack('eng', len(s) + 1, 0x15) + str(s) + "\0"
-		return (crc32_dreambox(res,0x4d),res)
+		return (crc32_dreambox(res, 0x4d), res)
 
 	# assembling long description (type 0x4e) and compute its crc
-	def long_desc(self,s):
+	def long_desc(self, s):
 		r = []
 		# compute total number of descriptions, block 245 bytes each
 		# number of descriptions start to index 0
 		num_tot_desc = (len(s) + 244) // 245
 		for i in range(num_tot_desc):
 			ssub = s[i * 245:i * 245 + 245]
-			sres = self.s_B3sBBB.pack((i << 4) + (num_tot_desc - 1),'eng',0x00,len(ssub) + 1,0x15) + str(ssub)
-			r.append((crc32_dreambox(sres,0x4e), sres))
+			sres = self.s_B3sBBB.pack((i << 4) + (num_tot_desc - 1), 'eng', 0x00, len(ssub) + 1, 0x15) + str(ssub)
+			r.append((crc32_dreambox(sres, 0x4e), sres))
 		return r
 
 	def add_event(self, starttime, duration, title, description):
@@ -1200,8 +1200,8 @@ class epgdat_class:
 			ssid = service.split(":")
 			# write CHANNEL INFO record (sid, onid, tsid, eventcount)
 			self.EPG_TMP_FD.write(self.s_IIII.pack(
-				int(ssid[3],16), int(ssid[5],16),
-				int(ssid[4],16), len(self.events)))
+				int(ssid[3], 16), int(ssid[5], 16),
+				int(ssid[4], 16), len(self.events)))
 			self.EPG_HEADER1_channel_count += 1
 			# event_dict.keys() are numeric so indexing is possibile
 			# key is the same thing as counter and is more simple to manage last-1 item
@@ -1219,11 +1219,11 @@ class epgdat_class:
 				#if not exist_event(short_d[0]) :
 				if not self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.has_key(short_d[0]):
 					# DESCRIPTION DATA
-					pack_1 = s_BB.pack(0x4d,len(short_d[1])) + short_d[1]
+					pack_1 = s_BB.pack(0x4d, len(short_d[1])) + short_d[1]
 					# DESCRIPTION HEADER (2 int) will be computed at the end just before EPG.DAT write
 					# because it need the total number of the same description called by many channel section
 					#save_event(short_d[0],[pack_1,1])
-					self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[short_d[0]] = [pack_1,1]
+					self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[short_d[0]] = [pack_1, 1]
 					self.EPG_HEADER2_description_count += 1
 				else:
 					#increment_event(short_d[0])
@@ -1236,18 +1236,18 @@ class epgdat_class:
 					#if not exist_event(long_d[i][0]) :
 					if not self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.has_key(desc[0]):
 						# DESCRIPTION DATA
-						pack_1 = s_BB.pack(0x4e,len(desc[1])) + desc[1]
+						pack_1 = s_BB.pack(0x4e, len(desc[1])) + desc[1]
 						self.EPG_HEADER2_description_count += 1
 						# DESCRIPTION HEADER (2 int) will be computed at the end just before EPG.DAT write
 						# because it need the total number of the same description called by different channel section
 						#save_event(long_d[i][0],[pack_1,1])
-						self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[desc[0]] = [pack_1,1]
+						self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[desc[0]] = [pack_1, 1]
 					else:
 						#increment_event(long_d[i][0])
 						self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[desc[0]][1] += 1
 				# **** (2) : have REF DESC and now can create EVENT HEADER / DATA ****
 				# EVENT HEADER (2 bytes: 0x01 , 10 bytes + number of CRC32 * 4)
-				pack_1 = s_BB.pack(0x01,0x0a + EPG_EVENT_HEADER_datasize)
+				pack_1 = s_BB.pack(0x01, 0x0a + EPG_EVENT_HEADER_datasize)
 				self.EPG_TMP_FD.write(pack_1)
 				# extract date and time from <event>
 				# unix format (second since 1970) and already GMT corrected
@@ -1259,7 +1259,7 @@ class epgdat_class:
 				# simply create an incremental ID,  starting from '1'
 				# event_id appears to be per channel, so this should be okay.
 				EPG_EVENT_DATA_id += 1
-				pack_1 = self.s_b_HH.pack(EPG_EVENT_DATA_id,dvb_date) # ID and DATE , always in BIG_ENDIAN
+				pack_1 = self.s_b_HH.pack(EPG_EVENT_DATA_id, dvb_date) # ID and DATE , always in BIG_ENDIAN
 				pack_2 = s_BBB.pack(*TL_hexconv(event_time_HMS)) # START TIME
 				pack_3 = s_BBB.pack(*TL_hexconv(event_length_HMS)) # LENGTH 
 				pack_4 = s_I.pack(short_d[0]) # REF DESC short (title)            
@@ -1273,12 +1273,12 @@ class epgdat_class:
 	def final_process(self):
 		if self.EPG_TOTAL_EVENTS > 0:
 			self.EPG_TMP_FD.close()
-			epgdat_fd = open(self.EPGDAT_FILENAME,"wb")
+			epgdat_fd = open(self.EPGDAT_FILENAME, "wb")
 			# HEADER 1
-			pack_1 = struct.pack(self.LB_ENDIAN + "I13sI",0x98765432,'ENIGMA_EPG_V7',self.EPG_HEADER1_channel_count)
+			pack_1 = struct.pack(self.LB_ENDIAN + "I13sI", 0x98765432, 'ENIGMA_EPG_V7', self.EPG_HEADER1_channel_count)
 			epgdat_fd.write(pack_1)
 			# write first EPG.DAT section
-			EPG_TMP_FD = open(self.EPGDAT_TMP_FILENAME,"rb")
+			EPG_TMP_FD = open(self.EPGDAT_TMP_FILENAME, "rb")
 			while True:
 				pack_1 = EPG_TMP_FD.read(4096)
 				if not pack_1:
@@ -1293,7 +1293,7 @@ class epgdat_class:
 			for temp in sorted(self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.keys()):
 				pack_2 = self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[temp]
 				#pack_1=struct.pack(LB_ENDIAN+"II",int(temp,16),pack_2[1])
-				pack_1 = s_ii.pack(temp,pack_2[1])
+				pack_1 = s_ii.pack(temp, pack_2[1])
 				epgdat_fd.write(pack_1 + pack_2[0])
 			epgdat_fd.close()
 		# *** cleanup **
@@ -1448,7 +1448,7 @@ class AutoStartTimer:
 		elif scheduledOperation == "CHECKCORRECTTIME":
 			self.update()
 		elif twisted.python.runtime.platform.supportsThreads():
-			threads.deferToThread(self.copyEpg,self).addCallback(lambda ignore: self.afterCopyEPG())
+			threads.deferToThread(self.copyEpg, self).addCallback(lambda ignore: self.afterCopyEPG())
 		else:
 			self.copyEpg(self)
 			self.afterCopyEPG()
@@ -1468,7 +1468,7 @@ class AutoStartTimer:
 		if reboot:
 			config.plugins.buyukbangpanel.lastcopyepgrestarttime.setValue(int(time.time()))
 			config.plugins.buyukbangpanel.lastcopyepgrestarttime.save()
-			restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
+			restartConfirmation = self.session.openWithCallback(self.restartEnigma, MessageBox, _("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 			restartConfirmation.setTitle(_("Restart now?"))
 		nowt = time.time()
 		if time.time() - 3600 < self.scheduledoperationtime < time.time() + 60:
