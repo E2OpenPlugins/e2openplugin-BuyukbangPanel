@@ -59,6 +59,7 @@ from Components.Language import language
 from os import environ, popen
 from Tools.Directories import resolveFilename, SCOPE_LANGUAGE, SCOPE_PLUGINS
 
+
 def localeInit():
 	lang = language.getLanguage()
 	environ["LANGUAGE"] = lang[:2]
@@ -66,11 +67,13 @@ def localeInit():
 	gettext.textdomain("enigma2")
 	gettext.bindtextdomain("BuyukbangPanel", "%s%s" % (resolveFilename(SCOPE_PLUGINS), "Extensions/BuyukbangPanel/locale/"))
 
+
 def _(txt):
 	t = gettext.dgettext("BuyukbangPanel", txt)
 	if t == txt:
 		t = gettext.gettext(txt)
 	return t
+
 
 localeInit()
 language.addCallback(localeInit)
@@ -80,59 +83,61 @@ language.addCallback(localeInit)
 #Set default configuration
 config.plugins.buyukbangpanel = ConfigSubsection()
 if hasattr(eEPGCache, 'importEvent'):
-	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default = True)
-	config.plugins.buyukbangpanel.interval = ConfigNumber(default = 60)
+	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default=True)
+	config.plugins.buyukbangpanel.interval = ConfigNumber(default=60)
 elif hasattr(eEPGCache, 'load'):
-	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default = True)
-	config.plugins.buyukbangpanel.interval = ConfigNumber(default = 600)
+	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default=True)
+	config.plugins.buyukbangpanel.interval = ConfigNumber(default=600)
 else:
-	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default = False)
-	config.plugins.buyukbangpanel.interval = ConfigNumber(default = 600)
-config.plugins.buyukbangpanel.scheduled = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledepgcopytime = ConfigClock(default = ((21*60) + 00) * 60) # 21:00
-config.plugins.buyukbangpanel.startupcopydelay = ConfigNumber(default = 2)
-config.plugins.buyukbangpanel.forceepgdat = ConfigYesNo(default = False)
-config.plugins.buyukbangpanel.linkepg = ConfigSelection(choices = [("0", _("Only infoBar and EPG info")), ("1", _("All EPG queries")), ("2", _("Disable"))], default = "0")
-config.plugins.buyukbangpanel.readepgboquet = ConfigSelection(choices = [("0", _("At startup <Changes requires restart>")), ("1", _("In realtime <Uses more CPU>"))], default = "0")
-config.plugins.buyukbangpanel.filterdummy = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.dummystring = ConfigText(default = 'Current,Next,dummyEventName,.,', fixed_size = False)
-config.plugins.buyukbangpanel.epgencoding = ConfigSelection(choices = [("ISO6397", _("ISO6397")),("ISO8859-1", _("ISO8859-1")),("ISO8859-2", _("ISO8859-2")), ("ISO8859-3", _("ISO8859-3")), ("ISO8859-4", _("ISO8859-4")), ("ISO8859-5", _("ISO8859-5")), ("ISO8859-6", _("ISO8859-6")), ("ISO8859-7", _("ISO8859-7")), ("ISO8859-8", _("ISO8859-8")), ("ISO8859-9", _("ISO8859-9")), ("ISO8859-10", _("ISO8859-10")), ("ISO8859-11", _("ISO8859-11")), ("ISO8859-13", _("ISO8859-13")), ("ISO8859-14", _("ISO8859-14")), ("ISO8859-15", _("ISO8859-15")), ("ISO8859-16", _("ISO8859-16"))], default = "ISO8859-9")
+	config.plugins.buyukbangpanel.periodic = ConfigEnableDisable(default=False)
+	config.plugins.buyukbangpanel.interval = ConfigNumber(default=600)
+config.plugins.buyukbangpanel.scheduled = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledepgcopytime = ConfigClock(default=((21 * 60) + 00) * 60) # 21:00
+config.plugins.buyukbangpanel.startupcopydelay = ConfigNumber(default=2)
+config.plugins.buyukbangpanel.forceepgdat = ConfigYesNo(default=False)
+config.plugins.buyukbangpanel.linkepg = ConfigSelection(choices=[("0", _("Only infoBar and EPG info")), ("1", _("All EPG queries")), ("2", _("Disable"))], default="0")
+config.plugins.buyukbangpanel.readepgboquet = ConfigSelection(choices=[("0", _("At startup <Changes requires restart>")), ("1", _("In realtime <Uses more CPU>"))], default="0")
+config.plugins.buyukbangpanel.filterdummy = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.dummystring = ConfigText(default='Current,Next,dummyEventName,.,', fixed_size=False)
+config.plugins.buyukbangpanel.epgencoding = ConfigSelection(choices=[("ISO6397", _("ISO6397")), ("ISO8859-1", _("ISO8859-1")), ("ISO8859-2", _("ISO8859-2")), ("ISO8859-3", _("ISO8859-3")), ("ISO8859-4", _("ISO8859-4")), ("ISO8859-5", _("ISO8859-5")), ("ISO8859-6", _("ISO8859-6")), ("ISO8859-7", _("ISO8859-7")), ("ISO8859-8", _("ISO8859-8")), ("ISO8859-9", _("ISO8859-9")), ("ISO8859-10", _("ISO8859-10")), ("ISO8859-11", _("ISO8859-11")), ("ISO8859-13", _("ISO8859-13")), ("ISO8859-14", _("ISO8859-14")), ("ISO8859-15", _("ISO8859-15")), ("ISO8859-16", _("ISO8859-16"))], default="ISO8859-9")
 try: #some old images may not have this key and crashes. "Try" fixes this possible bug.
 	if config.osd.language.value == "tr_TR":
-		config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices = [("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default = "tur")
+		config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices=[("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default="tur")
 	else:
-		config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices = [("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default = "disable")
+		config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices=[("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default="disable")
 except:
-	config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices = [("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default = "disable")
-config.plugins.buyukbangpanel.hidezaperrors = ConfigEnableDisable(default = False)
-config.plugins.buyukbangpanel.scheduledoperation = ConfigSelection(choices = [("0", _("Disable")), ("1", _("Shutdown")), ("2", _("Reboot")), ("3", _("Restart GUI")), ("4", _("Standby")) ], default = "0")
-config.plugins.buyukbangpanel.scheduledoperationtime = ConfigClock(default = ((5*60) + 00) * 60) # 5:00
-config.plugins.buyukbangpanel.scheduledoperationmon = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationtue = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationwed = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationthu = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationfri = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationsat = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.scheduledoperationsun = ConfigEnableDisable(default = True)
-config.plugins.buyukbangpanel.restarttype = ConfigSelection(choices = [("3", _("Restart GUI")), ("2", _("Reboot")) ], default = "3")
-config.plugins.buyukbangpanel.showinextensions = ConfigYesNo(default = True)
-config.plugins.buyukbangpanel.lastcopyepgrestarttime = ConfigNumber(default = 0)
-config.plugins.buyukbangpanel.startuptostandby =  ConfigSelection(choices = [("0", _("Disable")), ("1", _("Except GUI restarts")), ("2", _("On all startups"))], default = "0")
+	config.plugins.buyukbangpanel.fixepgencoding = ConfigSelection(choices=[("disable", _("Disable")), ("afg", _("Afghan")), ("alb", _("Albanian")), ("amh", _("Amharic")), ("ara", _("Arabic")), ("arm", _("Armenian")), ("ast", _("Asturian")), ("aze", _("Azerian")), ("bas", _("Basque")), ("bel", _("Belarusian")), ("ben", _("Bengali")), ("ber", _("Berbere")), ("bos", _("Bosnian")), ("bre", _("Breton")), ("bul", _("Bulgarian")), ("cat", _("Catalan")), ("chi", _("Chinese")), ("cro", _("Croatian")), ("cze", _("Czech")), ("den", _("Danish")), ("ned", _("Dutch")), ("eng", _("English")), ("est", _("Estonian")), ("far", _("Farsi")), ("fin", _("Finnish")), ("fra", _("French")), ("fri", _("Frisian")), ("gla", _("Gaelic")), ("gal", _("Galician")), ("geo", _("Georgian")), ("ger", _("German")), ("gre", _("Greek")), ("guj", _("Gujarati")), ("heb", _("Hebrew")), ("hin", _("Hindi")), ("hun", _("Hungarian")), ("ice", _("Icelandic")), ("ind", _("India")), ("iri", _("Irish")), ("ita", _("Italian")), ("jap", _("Japanese")), ("kaz", _("Kazakh")), ("khm", _("Khmer")), ("kor", _("Korean")), ("kur", _("Kurdish")), ("kyr", _("Kyrgyz")), ("lat", _("Latvian")), ("lit", _("Lithuanian")), ("lux", _("Luxembourg")), ("mac", _("Macedonian")), ("mal", _("Malayalam")), ("mlt", _("Maltese")), ("mdr", _("Mandarin")), ("mol", _("Moldovan")), ("mya", _("Myanmar")), ("nep", _("Nepali")), ("nor", _("Norwegian")), ("pus", _("Pashto")), ("per", _("Persian")), ("pol", _("Polish")), ("por", _("Portuguese")), ("pun", _("Punjabi")), ("rom", _("Romanian")), ("rus", _("Russian")), ("ser", _("Serbian")), ("snd", _("Sindhi")), ("sin", _("Sinhala")), ("slk", _("Slovakian")), ("slo", _("Slovenian")), ("som", _("Somali")), ("esp", _("Spanish")), ("swa", _("Swali")), ("swe", _("Sweden")), ("tag", _("Tagalog")), ("taj", _("Tajik")), ("tam", _("Tamil")), ("tel", _("Telugu")), ("tha", _("Thailand")), ("tig", _("Tigrinya")), ("tur", _("Turkish")), ("ukr", _("Ukrainian")), ("urd", _("Urdu")), ("vie", _("Vietnamese")), ("wel", _("Welsh"))], default="disable")
+config.plugins.buyukbangpanel.hidezaperrors = ConfigEnableDisable(default=False)
+config.plugins.buyukbangpanel.scheduledoperation = ConfigSelection(choices=[("0", _("Disable")), ("1", _("Shutdown")), ("2", _("Reboot")), ("3", _("Restart GUI")), ("4", _("Standby"))], default="0")
+config.plugins.buyukbangpanel.scheduledoperationtime = ConfigClock(default=((5 * 60) + 00) * 60) # 5:00
+config.plugins.buyukbangpanel.scheduledoperationmon = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationtue = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationwed = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationthu = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationfri = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationsat = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.scheduledoperationsun = ConfigEnableDisable(default=True)
+config.plugins.buyukbangpanel.restarttype = ConfigSelection(choices=[("3", _("Restart GUI")), ("2", _("Reboot"))], default="3")
+config.plugins.buyukbangpanel.showinextensions = ConfigYesNo(default=True)
+config.plugins.buyukbangpanel.lastcopyepgrestarttime = ConfigNumber(default=0)
+config.plugins.buyukbangpanel.startuptostandby = ConfigSelection(choices=[("0", _("Disable")), ("1", _("Except GUI restarts")), ("2", _("On all startups"))], default="0")
 
 # Plugin definition
 from Plugins.Plugin import PluginDescriptor
 
 # Global variable
-_session = None 
+_session = None
 autoStartTimer = None
 autostartExecuted = None
-timerEpgCopyRunning  = False
+timerEpgCopyRunning = False
 manualEpgCopyRunning = False
 scheduledOperation = None
 reboot = False
 lastrestartallowedtime = int(config.plugins.buyukbangpanel.lastcopyepgrestarttime.value)
 
 ###################################### GETEPGMAP ###################################
+
+
 def getEPGMap(self):
 	dst2src = {}
 	src2dst = {}
@@ -153,7 +158,7 @@ def getEPGMap(self):
 	#python tuples
 	#unknown format string chars are returned as python None values !
 	for bouquet in bouquets:
-		if bouquet[1].replace('\xc2\x86', '').replace('\xc2\x87', '').lower() == "epg" :
+		if bouquet[1].replace('\xc2\x86', '').replace('\xc2\x87', '').lower() == "epg":
 			services = serviceHandler.list(eServiceReference(bouquet[0]))
 			channels = services and services.getContent("RSN", True)
 			srcref = {}
@@ -174,10 +179,13 @@ def getEPGMap(self):
 					#f.close()
 	return (dst2src, src2dst)
 
+
 eEPGCache.getEPGMap = getEPGMap
 EventInfo.getEPGMap = getEPGMap
 
 ###################################### COPYEPG ###################################
+
+
 def copyEpg(self):
 	global timerEpgCopyRunning, manualEpgCopyRunning, scheduledOperation, reboot
 	epgpath = None
@@ -189,7 +197,7 @@ def copyEpg(self):
 		print>>log, "\n"
 		print>>log, _("Another EPG copy operation is in progress. EPG copy will not start.")
 		if hasattr(self, 'save_pre'):
-			self.session.open(MessageBox, _("Buyukbang Panel\n\nAnother EPG copy operation is in progress. Please wait..."), MessageBox.TYPE_ERROR, timeout = 10, close_on_any_key = True)
+			self.session.open(MessageBox, _("Buyukbang Panel\n\nAnother EPG copy operation is in progress. Please wait..."), MessageBox.TYPE_ERROR, timeout=10, close_on_any_key=True)
 		return
 	if hasattr(self, 'save_pre'):
 		print>>log, _("Manual EPG copy started")
@@ -208,9 +216,9 @@ def copyEpg(self):
 	if not hasattr(eEPGCache, 'importEvent') or config.plugins.buyukbangpanel.forceepgdat.value:
 		epgpath = "/hdd"
 		epgfile = "/hdd/epg.dat"
-		cfFound=False
-		usbFound=False
-		hddFound=False
+		cfFound = False
+		usbFound = False
+		hddFound = False
 		fmount = None
 		# Reported: Some images don't support popen, may be they have a bad/missing implementation.
 		try:
@@ -223,22 +231,22 @@ def copyEpg(self):
 				pass
 		if fmount:
 			for l in fmount.xreadlines():
-				if l.find('/media/cf')!=-1:
-					cfFound=True
-				if l.find('/media/usb')!=-1:
-					usbFound=True
-				if l.find('/media/hdd')!=-1:
-					hddFound=True
+				if l.find('/media/cf') != -1:
+					cfFound = True
+				if l.find('/media/usb') != -1:
+					usbFound = True
+				if l.find('/media/hdd') != -1:
+					hddFound = True
 			fmount.close()
 		if cfFound:
-			epgpath='/media/cf'
-			epgfile='/media/cf/epg.dat'
+			epgpath = '/media/cf'
+			epgfile = '/media/cf/epg.dat'
 		if usbFound:
-			epgpath='/media/usb'
-			epgfile='/media/usb/epg.dat'
+			epgpath = '/media/usb'
+			epgfile = '/media/usb/epg.dat'
 		if hddFound:
-			epgpath='/media/hdd'
-			epgfile='/media/hdd/epg.dat'
+			epgpath = '/media/hdd'
+			epgfile = '/media/hdd/epg.dat'
 		try: #some old images do not have this key and crashes. "Try" fixes this bug.
 			if config.misc.epgcache_filename.value:
 				parent = os.path.split(config.misc.epgcache_filename.value)[0]
@@ -265,15 +273,15 @@ def copyEpg(self):
 	#python tuples
 	#unknown format string chars are returned as python None values !
 	for bouquet in bouquets:
-		if bouquet[1].replace('\xc2\x86', '').replace('\xc2\x87', '').lower() == "epg" :
+		if bouquet[1].replace('\xc2\x86', '').replace('\xc2\x87', '').lower() == "epg":
 			services = serviceHandler.list(eServiceReference(bouquet[0]))
 			channels = services and services.getContent("RSN", True)
 			# Add one more dummy seperator at the end. So there will be no need to duplicate looped importEvents code part for just the last item.
-			channels.append([None,"1:64:",None])
+			channels.append([None, "1:64:", None])
 	srcChannel = None
 	dstChannelList = []
-	eventlist  = {}
-	timeAdjustment=0
+	eventlist = {}
+	timeAdjustment = 0
 	if not channels:
 		manualEpgCopyRunning = False
 		timerEpgCopyRunning = False
@@ -283,12 +291,12 @@ def copyEpg(self):
 		return
 	for channel in channels:
 		if channel[1].startswith("1:64:"):
-			timeAdjustment=0
-			timeAdjustmentStr=''
+			timeAdjustment = 0
+			timeAdjustmentStr = ''
 			if channel[2]:
-				timeAdjustmentStr=channel[2][channel[2].find('(')+1 : channel[2].find(')')]
+				timeAdjustmentStr = channel[2][channel[2].find('(') + 1: channel[2].find(')')]
 				if len(timeAdjustmentStr) > 0:
-					timeAdjustment=int(timeAdjustmentStr) * 3600
+					timeAdjustment = int(timeAdjustmentStr) * 3600
 			if eventlist and dstChannelList:
 				try:
 					if hasattr(eEPGCache, 'importEvents') and not config.plugins.buyukbangpanel.forceepgdat.value:
@@ -309,13 +317,13 @@ def copyEpg(self):
 					self["statusbar"].setText(_("No EPG data available for %s") % srcChannel)
 			srcChannel = None
 			dstChannelList = []
-			eventlist  = {}
+			eventlist = {}
 		elif srcChannel is None:
 			srcChannel = channel[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
 			#B = Event Begin Time, D = Event Duration, T = Event Title, S = Event Short Description, E = Event Extended Description, 0 = PyLong(0)
 			eventlist = epgcache.lookupEvent(['BDTSE0', (channel[1], -1, -1, -1)])
 			for i in range(len(eventlist)):
-				eventlist[i] = (eventlist[i][0]+timeAdjustment,eventlist[i][1],eventlist[i][2],eventlist[i][3],eventlist[i][4],eventlist[i][5])
+				eventlist[i] = (eventlist[i][0] + timeAdjustment, eventlist[i][1], eventlist[i][2], eventlist[i][3], eventlist[i][4], eventlist[i][5])
 		else:
 			dstChannelList.append(channel[1])
 	if epgdat is not None:
@@ -380,8 +388,9 @@ def copyEpg(self):
 ##################### LOOKUPEVENTTIME #####################
 baseeEPGCache_lookupEventTime = eEPGCache.lookupEventTime
 
+
 def eEPGCache_lookupEventTime(self, ref, start_time, direction=None):
-	if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value  == "1":
+	if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value == "1":
 		self.dst2src = self.getEPGMap()[0]
 	if self.dst2src.has_key(ref.toString()):
 		ref = self.dst2src[ref.toString()][3]
@@ -393,6 +402,7 @@ def eEPGCache_lookupEventTime(self, ref, start_time, direction=None):
 	else:
 		return baseeEPGCache_lookupEventTime(self, ref, start_time, direction)
 
+
 if config.plugins.buyukbangpanel.linkepg.value != "2":
 	eEPGCache.lookupEventTime = eEPGCache_lookupEventTime
 
@@ -401,11 +411,12 @@ if config.plugins.buyukbangpanel.linkepg.value != "2":
 #baseeEPGCache_lookupeventid = eEPGCache.lookupeventid
 
 def eEPGCache_lookupeventid(self, ref, eventid):
-	if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value  == "1":
+	if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value == "1":
 		self.dst2src = self.getEPGMap()[0]
 	if self.dst2src.has_key(ref.toString()):
 		ref = self.dst2src[ref.toString()][3]
 	return baseeEPGCache_lookupeventid(self, ref, eventid)
+
 
 if config.plugins.buyukbangpanel.linkepg.value != "2":
 	eEPGCache.lookupeventid = eEPGCache_lookupeventid
@@ -441,9 +452,11 @@ baseeEPGCache_lookupEvent = eEPGCache.lookupEvent
 #      when type is eventid it is the event_id
 #      when type is time then it is the start_time ( -1 for now_time )
 #   the fourth is the end_time .. ( optional .. for query all events in time range)
+
+
 def eEPGCache_lookupEvent(self, listoftuple, buildFunc=None):
 	resultList = {}
-	if not hasattr(eEPGCache, 'dst2src') or not hasattr(eEPGCache, 'src2dst') or config.plugins.buyukbangpanel.readepgboquet.value  == "1":
+	if not hasattr(eEPGCache, 'dst2src') or not hasattr(eEPGCache, 'src2dst') or config.plugins.buyukbangpanel.readepgboquet.value == "1":
 		EPGMap = self.getEPGMap()
 		self.dst2src = EPGMap[0]
 		self.src2dst = EPGMap[1]
@@ -461,7 +474,7 @@ def eEPGCache_lookupEvent(self, listoftuple, buildFunc=None):
 	if buildFunc is not None:
 		resultList = baseeEPGCache_lookupEvent(self, listoftuple, buildFunc)
 	else:
-		resultList =  baseeEPGCache_lookupEvent(self, listoftuple)
+		resultList = baseeEPGCache_lookupEvent(self, listoftuple)
 	#We now have a result with the linked service references. We need to replace this references with the original ones.
 	#ref_position = listoftuple[0].replace('X', '').find('R')
 	#f = open('/media/hdd/deneme.txt', 'a')
@@ -475,12 +488,14 @@ def eEPGCache_lookupEvent(self, listoftuple, buildFunc=None):
 	#			resultList[i] = tuple(tmpresultList)
 	return resultList
 
+
 if config.plugins.buyukbangpanel.linkepg.value == "1":
 	eEPGCache.lookupEvent = eEPGCache_lookupEvent
 
 
 ########################### INFOBAR FIX STARTS  ###########################
 EventInfo.lastdst = None
+
 
 def EventInfo_gotEvent(self, what):
 	refstr = None
@@ -506,7 +521,7 @@ def EventInfo_gotEvent(self, what):
 					return
 		if ret:
 			if refstr and config.plugins.buyukbangpanel.linkepg.value != "2":
-				if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value  == "1":
+				if not hasattr(eEPGCache, 'dst2src') or config.plugins.buyukbangpanel.readepgboquet.value == "1":
 					self.dst2src = self.getEPGMap()[0]
 				if self.dst2src.has_key(refstr):
 					if self.lastdst != refstr:
@@ -516,6 +531,7 @@ def EventInfo_gotEvent(self, what):
 			self.lastdst = None
 			self.changed((self.CHANGED_ALL,))
 
+
 if config.plugins.buyukbangpanel.filterdummy.value:
 	EventInfo.gotEvent = EventInfo_gotEvent
 
@@ -524,7 +540,7 @@ if config.plugins.buyukbangpanel.filterdummy.value:
 def InfoBarEPG_openEventView(self):
 	found = 0
 	ref = self.session.nav.getCurrentlyPlayingServiceReference()
-	self.epglist = [ ]
+	self.epglist = []
 	epglist = self.epglist
 	self.is_now_next = False
 	epg = eEPGCache.getInstance()
@@ -544,6 +560,7 @@ def InfoBarEPG_openEventView(self):
 	else:
 		print "No epg for the service available. So we show multiepg instead of eventinfo"
 		self.openMultiServiceEPG(False)
+
 
 if config.plugins.buyukbangpanel.filterdummy.value:
 	InfoBarEPG.openEventView = InfoBarEPG_openEventView
@@ -567,10 +584,13 @@ def importEvents(self, services, events):
 	for service in services:
 		self.epgcache.importEvent(service, events)
 
+
 if hasattr(eEPGCache, 'importEvent') and not hasattr(eEPGCache, 'importEvents'):
 	eEPGCache.importEvents = importEvents
 
 ###################################### MAIN SCREEN ###################################
+
+
 class mainMenu(Screen):
 	skin = """
 	<screen position="center,center" size="640,400" title="Buyukbang Panel v1.4.2             buyukbang.blogspot.com">
@@ -584,11 +604,11 @@ class mainMenu(Screen):
 					"itemHeight": 40
 				}
 			</convert>
-		</widget>	
+		</widget>
 	</screen>"""
-	
-	def __init__(self, session, args = 0):
-		
+
+	def __init__(self, session, args=0):
+
 		self.session = session
 		self.setup_title = _("Buyukbang Panel v1.4.2             buyukbang.blogspot.com")
 		Screen.__init__(self, session)
@@ -613,7 +633,7 @@ class mainMenu(Screen):
 		}, -2)
 
 	def buildListEntry(self, description, image):
-		pixmap = LoadPixmap(cached=True, path="/usr/lib/enigma2/python/Plugins/Extensions/BuyukbangPanel/images/%s" %image);
+		pixmap = LoadPixmap(cached=True, path="/usr/lib/enigma2/python/Plugins/Extensions/BuyukbangPanel/images/%s" % image)
 		return((pixmap, description))
 
 	def openSelected(self):
@@ -639,25 +659,26 @@ class mainMenu(Screen):
 			self.session.open(LogScreen)
 		elif menuIndex == 9:
 			self.session.open(EPGMainSetup)
+
 	def quit(self):
 		self.close()
 
 
-class EPGMainSetup(ConfigListScreen,Screen):
+class EPGMainSetup(ConfigListScreen, Screen):
 	skin = """
 	<screen position="center,center" size="640,400" title="Buyukbang Panel v1.4.2             buyukbang.blogspot.com" >
 		<ePixmap name="red"    position="0,0"   zPosition="2" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
 		<ePixmap name="green"  position="160,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
-		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" /> 
-		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" /> 
-	
-		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
-		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
+		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
+		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
+
+		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
+		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_yellow" position="320,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_blue" position="480,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
-	
+
 		<widget name="config" position="10,60" size="620,300" scrollbarMode="showOnDemand" />
-	
+
 		<ePixmap alphatest="on" pixmap="skin_default/icons/clock.png" position="560,378" size="14,14" zPosition="3"/>
 		<widget font="Regular;18" halign="left" position="585,375" render="Label" size="55,20" source="global.CurrentTime" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
@@ -665,8 +686,8 @@ class EPGMainSetup(ConfigListScreen,Screen):
 		<widget name="statusbar" position="10,375" size="530,20" font="Regular;18" />
 		<widget name="status" position="10,300" size="540,60" font="Regular;20" />
 	</screen>"""
-	
-	def __init__(self, session, args = 0):
+
+	def __init__(self, session, args=0):
 		global menuIndex
 		self.session = session
 		self.copyEpg = copyEpg
@@ -709,7 +730,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			self.list.append(getConfigListEntry(_("When restart needed") + ":", cfg.restarttype))
 			self.list.append(getConfigListEntry(_("Show in extensions") + ":", cfg.showinextensions))
 
-		ConfigListScreen.__init__(self, self.list, session = self.session, on_change = self.changedEntry)
+		ConfigListScreen.__init__(self, self.list, session=self.session, on_change=self.changedEntry)
 		self["config"].onSelectionChanged.append(self.selectionChanged)
 		self["status"] = Label()
 		self["statusbar"] = Label()
@@ -732,7 +753,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			"log": self.yellowAction,
 		}, -2)
 		self.onChangedEntry = []
-		
+
 		self.oldscheduled = config.plugins.buyukbangpanel.scheduled.value
 		self.oldperiodic = config.plugins.buyukbangpanel.periodic.value
 		self.oldstartupcopydelay = config.plugins.buyukbangpanel.startupcopydelay.value
@@ -763,21 +784,21 @@ class EPGMainSetup(ConfigListScreen,Screen):
 
 	def getCurrentEntry(self):
 		return self["config"].getCurrent()[0]
-		
+
 	def getCurrentValue(self):
 		return str(self["config"].getCurrent()[1].getText())
-		
+
 	def createSummary(self):
 		from Screens.Setup import SetupSummary
 		return SetupSummary
-		
+
 	def selectionChanged(self):
 		self["statusbar"].setText(" ")
 
 	def save_pre(self):
 		if config.plugins.buyukbangpanel.fixepgencoding.value != "disable" \
-		and (self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value ):
-			encodingConfirmation = self.session.openWithCallback(self.save,MessageBox,_("Buyukbang Panel\n\nUpdating encoding settings requires internet connection to query Kingofsat and this may take a few minutes.\n\nDo you want to continue?"), MessageBox.TYPE_YESNO, timeout = 15, default = True)
+		and (self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value):
+			encodingConfirmation = self.session.openWithCallback(self.save, MessageBox, _("Buyukbang Panel\n\nUpdating encoding settings requires internet connection to query Kingofsat and this may take a few minutes.\n\nDo you want to continue?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 			encodingConfirmation.setTitle(_("Continue?"))
 		else:
 			self.save(True)
@@ -807,14 +828,14 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			or self.oldscheduledoperationfri != config.plugins.buyukbangpanel.scheduledoperationfri.value \
 			or self.oldscheduledoperationsat != config.plugins.buyukbangpanel.scheduledoperationsat.value \
 			or self.oldscheduledoperationsun != config.plugins.buyukbangpanel.scheduledoperationsun.value \
-			or self.oldstartuptostandby != config.plugins.buyukbangpanel.startuptostandby.value :
+			or self.oldstartuptostandby != config.plugins.buyukbangpanel.startuptostandby.value:
 				if autoStartTimer is not None:
 					autoStartTimer.update()
 
 			if self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value \
 			or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value:
 				try:
-					os.rename('/usr/share/enigma2/encoding.conf_BuyukbangPanelBackup','/usr/share/enigma2/encoding.conf')
+					os.rename('/usr/share/enigma2/encoding.conf_BuyukbangPanelBackup', '/usr/share/enigma2/encoding.conf')
 					#Assure that encoding.conf is updated with the new encoding
 					self.oldfixepgencoding = "disable"
 				except Exception, e:
@@ -823,7 +844,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			if config.plugins.buyukbangpanel.fixepgencoding.value != "disable" and (self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value):
 				try:
 					if not os.path.exists('/usr/share/enigma2/encoding.conf') or not os.path.exists('/usr/share/enigma2/encoding.conf_BuyukbangPanelBackup'):
-						os.system('T=/usr/share/enigma2/encoding.conf && touch $T && (! grep -q "### BUYUKBANG PANEL ENCODING FIX ###" $T || [ ! -s $T"_BuyukbangPanelBackup" ]) && cp $T $T"_BuyukbangPanelBackup" && echo "" >> $T && echo "### BUYUKBANG PANEL ENCODING FIX ###" >> $T; wget -qO- "http://en.kingofsat.net/find2.php?cl=' + config.plugins.buyukbangpanel.fixepgencoding.value +'&ordre=freq" | grep ">NID:.*>TID:" | while read line ; do TSID="$(echo "$line" | cut -d":" -f3 | cut -d"<" -f1)"; ONID="$(echo "$line" | cut -d":" -f2 | cut -d"<" -f1)"; [ "$(echo $TSID | awk "/^[0-9]+$/")" != "" ] && [ "$(echo $ONID | awk "/^[0-9]+$/")" != "" ] && ELINE="$TSID $ONID ' + config.plugins.buyukbangpanel.epgencoding.value + '" && ! grep -q "$ELINE" $T && echo "$ELINE" >> $T; done')
+						os.system('T=/usr/share/enigma2/encoding.conf && touch $T && (! grep -q "### BUYUKBANG PANEL ENCODING FIX ###" $T || [ ! -s $T"_BuyukbangPanelBackup" ]) && cp $T $T"_BuyukbangPanelBackup" && echo "" >> $T && echo "### BUYUKBANG PANEL ENCODING FIX ###" >> $T; wget -qO- "http://en.kingofsat.net/find2.php?cl=' + config.plugins.buyukbangpanel.fixepgencoding.value + '&ordre=freq" | grep ">NID:.*>TID:" | while read line ; do TSID="$(echo "$line" | cut -d":" -f3 | cut -d"<" -f1)"; ONID="$(echo "$line" | cut -d":" -f2 | cut -d"<" -f1)"; [ "$(echo $TSID | awk "/^[0-9]+$/")" != "" ] && [ "$(echo $ONID | awk "/^[0-9]+$/")" != "" ] && ELINE="$TSID $ONID ' + config.plugins.buyukbangpanel.epgencoding.value + '" && ! grep -q "$ELINE" $T && echo "$ELINE" >> $T; done')
 				except Exception, e:
 					print>>log, _("Fixing EPG encoding failed")
 					print>>log, e
@@ -834,8 +855,8 @@ class EPGMainSetup(ConfigListScreen,Screen):
 			or self.olddummystring != config.plugins.buyukbangpanel.dummystring.value \
 			or self.oldfixepgencoding != config.plugins.buyukbangpanel.fixepgencoding.value \
 			or self.oldepgencoding != config.plugins.buyukbangpanel.epgencoding.value and config.plugins.buyukbangpanel.fixepgencoding.value != "disable" \
-			or self.oldhidezaperrors != config.plugins.buyukbangpanel.hidezaperrors.value :
-				restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to apply the new settings.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout = 15, default = True)
+			or self.oldhidezaperrors != config.plugins.buyukbangpanel.hidezaperrors.value:
+				restartConfirmation = self.session.openWithCallback(self.restartEnigma, MessageBox, _("Buyukbang Panel\n\nRestart needed to apply the new settings.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 				restartConfirmation.setTitle(_("Restart now?"))
 
 	def restartEnigma(self, answer):
@@ -844,13 +865,13 @@ class EPGMainSetup(ConfigListScreen,Screen):
 		#quitMainloop(5)
 		if answer is True:
 			self.session.open(TryQuitMainloop, int(config.plugins.buyukbangpanel.restarttype.value))
-		
+
 	def cancel(self):
 		global manualEpgCopyRunning
 		for x in self["config"].list:
 			x[1].cancel()
 		manualEpgCopyRunning = False
-		self.close(False,self.session)
+		self.close(False, self.session)
 
 	def yellowAction(self):
 		self.session.open(LogScreen)
@@ -859,7 +880,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 		global reboot
 		if menuIndex == 0:
 			if twisted.python.runtime.platform.supportsThreads():
-				threads.deferToThread(self.copyEpg,self).addCallback(lambda ignore: self.afterCopyEPG())
+				threads.deferToThread(self.copyEpg, self).addCallback(lambda ignore: self.afterCopyEPG())
 			else:
 				self.copyEpg(self)
 				self.afterCopyEPG()
@@ -867,7 +888,7 @@ class EPGMainSetup(ConfigListScreen,Screen):
 	def onTimer(self):
 		self.timer.stop()
 		if twisted.python.runtime.platform.supportsThreads():
-			threads.deferToThread(self.copyEpg,self).addCallback(lambda ignore: self.afterCopyEPG())
+			threads.deferToThread(self.copyEpg, self).addCallback(lambda ignore: self.afterCopyEPG())
 		else:
 			self.copyEpg(self)
 			self.afterCopyEPG()
@@ -875,29 +896,31 @@ class EPGMainSetup(ConfigListScreen,Screen):
 	def afterCopyEPG(self):
 		global reboot
 		if reboot:
-			restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout = 15, default = True)
+			restartConfirmation = self.session.openWithCallback(self.restartEnigma, MessageBox, _("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 			restartConfirmation.setTitle(_("Restart now?"))
 		self.update()
 
 ###################################### LOG SCREEN ###################################
+
+
 class LogScreen(Screen):
 	skin = """
 	<screen position="center,center" size="640,400" title="Buyukbang Panel v1.4.2             buyukbang.blogspot.com" >
 		<ePixmap name="red"    position="0,0"   zPosition="2" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
 		<ePixmap name="green"  position="160,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
-		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" /> 
-		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" /> 
+		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
+		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
 
-		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
-		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
+		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
+		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_yellow" position="320,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_blue" position="480,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
-	
+
 		<ePixmap alphatest="on" pixmap="skin_default/icons/clock.png" position="560,378" size="14,14" zPosition="3"/>
 		<widget font="Regular;18" halign="left" position="585,375" render="Label" size="55,20" source="global.CurrentTime" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
 		</widget>
-	
+
 		<widget name="list" position="10,60" size="620,320" />
 	</screen>"""
 
@@ -942,19 +965,21 @@ class LogScreen(Screen):
 		self.close(False)
 
 ############################## EPG FILE OPERATIONS SCREEN ###########################
+
+
 class EPGFileOperationsScreen(Screen):
 	skin = """
 	<screen position="center,center" size="640,400" title="Buyukbang Panel v1.4.2             buyukbang.blogspot.com" >
 		<ePixmap name="red"    position="0,0"   zPosition="2" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
 		<ePixmap name="green"  position="160,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
-		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" /> 
-		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" /> 
+		<ePixmap name="yellow" position="320,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
+		<ePixmap name="blue"   position="480,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
 
-		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
-		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
+		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
+		<widget name="key_green" position="160,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_yellow" position="320,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_blue" position="480,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
-	
+
 		<ePixmap alphatest="on" pixmap="skin_default/icons/clock.png" position="560,378" size="14,14" zPosition="3"/>
 		<widget font="Regular;18" halign="left" position="585,375" render="Label" size="55,20" source="global.CurrentTime" transparent="1" valign="center" zPosition="3">
 			<convert type="ClockToText">Default</convert>
@@ -994,10 +1019,12 @@ class EPGFileOperationsScreen(Screen):
 def main(session, **kwargs):
 	session.openWithCallback(doneConfiguring(session), mainMenu)
 
+
 def doneConfiguring(self):
 	global autoStartTimer
 	if autoStartTimer is not None:
 		autoStartTimer.update()
+
 
 ###################################### EPGDAT ###################################
 import sys
@@ -1007,13 +1034,13 @@ from datetime import datetime
 
 try:
 	import dreamcrc
-	crc32_dreambox = lambda d,t: dreamcrc.crc32(d,t) & 0xffffffff
+	crc32_dreambox = lambda d, t: dreamcrc.crc32(d, t) & 0xffffffff
 except:
 	# this table is used by CRC32 routine below (used by Dreambox for
 	# computing REF DESC value).
 	# The original DM routine is a modified CRC32 standard routine,
 	# so cannot use Python standard binascii.crc32()
-	CRCTABLE=(
+	CRCTABLE = (
 		0x00000000, 0x04C11DB7, 0x09823B6E, 0x0D4326D9,
 		0x130476DC, 0x17C56B6B, 0x1A864DB2, 0x1E475005,
 		0x2608EDB8, 0x22C9F00F, 0x2F8AD6D6, 0x2B4BCB61,
@@ -1083,18 +1110,21 @@ except:
 	# "crcdata" is the description string
 	# "crctype" is the description type (1 byte 0x4d or 0x4e)
 	# !!!!!!!!! IT'S VERY TIME CONSUMING !!!!!!!!!
+
 	def crc32_dreambox(crcdata, crctype, crctable=CRCTABLE):
-		# ML Optimized: local CRCTABLE (locals are faster), remove self, remove code that has no effect, faster loop    
+		# ML Optimized: local CRCTABLE (locals are faster), remove self, remove code that has no effect, faster loop
 		#crc=0x00000000L
 		#crc=((crc << 8 ) & 0xffffff00L) ^ crctable[((crc >> 24) ^ crctype) & 0x000000ffL ]
-		crc = crctable[crctype & 0x000000ffL ]
-		crc = ((crc << 8 ) & 0xffffff00L) ^ crctable[((crc >> 24) ^ len(crcdata)) & 0x000000ffL ]
+		crc = crctable[crctype & 0x000000ffL]
+		crc = ((crc << 8) & 0xffffff00L) ^ crctable[((crc >> 24) ^ len(crcdata)) & 0x000000ffL]
 		for d in crcdata:
-		    crc=((crc << 8 ) & 0xffffff00L) ^ crctable[((crc >> 24) ^ ord(d)) & 0x000000ffL ]
+		    crc = ((crc << 8) & 0xffffff00L) ^ crctable[((crc >> 24) ^ ord(d)) & 0x000000ffL]
 		return crc
 
-# convert time or length from datetime format to 3 bytes hex value 
+# convert time or length from datetime format to 3 bytes hex value
 # i.e. 20:25:30 -> 0x20 , 0x25 , 0x30
+
+
 def TL_hexconv(dt):
 	return (
 		(dt.hour % 10) + (16 * (dt.hour / 10)),
@@ -1105,75 +1135,75 @@ def TL_hexconv(dt):
 
 class epgdat_class:
 	# temp files used for EPG.DAT creation
-	LAMEDB='/etc/enigma2/lamedb'
-	EPGDAT_FILENAME='epg.dat'
-	EPGDAT_TMP_FILENAME='epg.dat.tmp'
-	LB_ENDIAN='<'
-	EPG_HEADER1_channel_count=0
-	EPG_HEADER2_description_count=0
-	EPG_TOTAL_EVENTS=0
+	LAMEDB = '/etc/enigma2/lamedb'
+	EPGDAT_FILENAME = 'epg.dat'
+	EPGDAT_TMP_FILENAME = 'epg.dat.tmp'
+	LB_ENDIAN = '<'
+	EPG_HEADER1_channel_count = 0
+	EPG_HEADER2_description_count = 0
+	EPG_TOTAL_EVENTS = 0
 
-	EXCLUDED_SID=[]
+	EXCLUDED_SID = []
 
 	# initialize an empty dictionary (Python array)
 	# as total events container postprocessed
-	EPGDAT_HASH_EVENT_MEMORY_CONTAINER={}
+	EPGDAT_HASH_EVENT_MEMORY_CONTAINER = {}
 
 	# initialize an empty dictionary (Python array)
 	# as channel events container before preprocessing
-	events=[]
+	events = []
 
 	# initialize an empty dictionary (Python array)
-	# the following format can handle duplicated channel name 
+	# the following format can handle duplicated channel name
 	# format: { channel_name : [ sid , sid , .... ] }
-	lamedb_dict={}
+	lamedb_dict = {}
 
 	# DVB/EPG count days with a 'modified Julian calendar' where day 1 is 17 November 1858
 	# Python can use a 'proleptic Gregorian calendar' ('import datetime') where day 1 is 01/01/0001
 	# Using 'proleptic' we can compute correct days as difference from NOW and 17/11/1858
 	#   datetime.datetime.toordinal(1858,11,17) => 678576
-	EPG_PROLEPTIC_ZERO_DAY=678576
+	EPG_PROLEPTIC_ZERO_DAY = 678576
 
-	def __init__(self,tmp_path,lamedb_path,epgdat_path):
-		self.EPGDAT_FILENAME=epgdat_path
-		self.EPGDAT_TMP_FILENAME=os.path.join(tmp_path,self.EPGDAT_TMP_FILENAME)
-		self.EPG_TMP_FD=open(self.EPGDAT_TMP_FILENAME,"wb")
-		self.LAMEDB=lamedb_path
+	def __init__(self, tmp_path, lamedb_path, epgdat_path):
+		self.EPGDAT_FILENAME = epgdat_path
+		self.EPGDAT_TMP_FILENAME = os.path.join(tmp_path, self.EPGDAT_TMP_FILENAME)
+		self.EPG_TMP_FD = open(self.EPGDAT_TMP_FILENAME, "wb")
+		self.LAMEDB = lamedb_path
 		self.s_B = struct.Struct("B")
 		self.s_BB = struct.Struct("BB")
 		self.s_BBB = struct.Struct("BBB")
 		self.s_b_HH = struct.Struct(">HH")
-		self.s_I = struct.Struct(self.LB_ENDIAN+"I")
-		self.s_II = struct.Struct(self.LB_ENDIAN+"II")     
-		self.s_IIII = struct.Struct(self.LB_ENDIAN+"IIII")     
-		self.s_B3sBBB = struct.Struct("B3sBBB")     
-		self.s_3sBB = struct.Struct("3sBB")     
+		self.s_I = struct.Struct(self.LB_ENDIAN + "I")
+		self.s_II = struct.Struct(self.LB_ENDIAN + "II")
+		self.s_IIII = struct.Struct(self.LB_ENDIAN + "IIII")
+		self.s_B3sBBB = struct.Struct("B3sBBB")
+		self.s_3sBB = struct.Struct("3sBB")
 
-	def set_endian(self,endian):
-		self.LB_ENDIAN=endian
-		self.s_I = struct.Struct(self.LB_ENDIAN+"I")
-		self.s_II = struct.Struct(self.LB_ENDIAN+"II")     
-		self.s_IIII = struct.Struct(self.LB_ENDIAN+"IIII")
+	def set_endian(self, endian):
+		self.LB_ENDIAN = endian
+		self.s_I = struct.Struct(self.LB_ENDIAN + "I")
+		self.s_II = struct.Struct(self.LB_ENDIAN + "II")
+		self.s_IIII = struct.Struct(self.LB_ENDIAN + "IIII")
 
-	def set_excludedsid(self,exsidlist):
-		self.EXCLUDED_SID=exsidlist
+	def set_excludedsid(self, exsidlist):
+		self.EXCLUDED_SID = exsidlist
 
 	# assembling short description (type 0x4d , it's the Title) and compute its crc
 	def short_desc(self, s):
 		# 0x15 is UTF-8 encoding.
-		res = self.s_3sBB.pack('eng', len(s)+1, 0x15) + str(s) + "\0"
-		return (crc32_dreambox(res,0x4d),res)
+		res = self.s_3sBB.pack('eng', len(s) + 1, 0x15) + str(s) + "\0"
+		return (crc32_dreambox(res, 0x4d), res)
 
 	# assembling long description (type 0x4e) and compute its crc
-	def long_desc(self,s):
+	def long_desc(self, s):
 		r = []
 		# compute total number of descriptions, block 245 bytes each
 		# number of descriptions start to index 0
 		num_tot_desc = (len(s) + 244) // 245
 		for i in range(num_tot_desc):
-			ssub = s[i*245:i*245+245]
-			sres = self.s_B3sBBB.pack((i << 4) + (num_tot_desc-1),'eng',0x00,len(ssub)+1,0x15) + str(ssub)
-			r.append((crc32_dreambox(sres,0x4e), sres))
+			ssub = s[i * 245:i * 245 + 245]
+			sres = self.s_B3sBBB.pack((i << 4) + (num_tot_desc - 1), 'eng', 0x00, len(ssub) + 1, 0x15) + str(ssub)
+			r.append((crc32_dreambox(sres, 0x4e), sres))
 		return r
 
 	def add_event(self, starttime, duration, title, description):
@@ -1182,7 +1212,7 @@ class epgdat_class:
 
 	def importEvents(self, services, events):
 		# We need to combine short and long descriptions since add_event function has only one description input parameter
-		# def add_event(self, starttime, duration, title, description):		
+		# def add_event(self, starttime, duration, title, description):
 		# Event tuple structure is BDTSE0 ==> B = Event Begin Time, D = Event Duration, T = Event Title, S = Event Short Description, E = Event Extended Description, 0 = PyLong(0)
 		for event in events:
 			desc = None
@@ -1199,9 +1229,9 @@ class epgdat_class:
 			# prepare and write CHANNEL INFO record
 			ssid = service.split(":")
 			# write CHANNEL INFO record (sid, onid, tsid, eventcount)
-			self.EPG_TMP_FD.write(self.s_IIII.pack( \
-				int(ssid[3],16), int(ssid[5],16), \
-				int(ssid[4],16), len(self.events)))
+			self.EPG_TMP_FD.write(self.s_IIII.pack(
+				int(ssid[3], 16), int(ssid[5], 16),
+				int(ssid[4], 16), len(self.events)))
 			self.EPG_HEADER1_channel_count += 1
 			# event_dict.keys() are numeric so indexing is possibile
 			# key is the same thing as counter and is more simple to manage last-1 item
@@ -1217,13 +1247,13 @@ class epgdat_class:
 				EPG_EVENT_HEADER_datasize += 4  # add 4 bytes for a sigle REF DESC (CRC32)
 				#if not epg_event_description_dict.has_key(short_d[0]):
 				#if not exist_event(short_d[0]) :
-				if not self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.has_key(short_d[0]) :
+				if not self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.has_key(short_d[0]):
 					# DESCRIPTION DATA
-					pack_1 = s_BB.pack(0x4d,len(short_d[1])) + short_d[1]
+					pack_1 = s_BB.pack(0x4d, len(short_d[1])) + short_d[1]
 					# DESCRIPTION HEADER (2 int) will be computed at the end just before EPG.DAT write
 					# because it need the total number of the same description called by many channel section
 					#save_event(short_d[0],[pack_1,1])
-					self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[short_d[0]]=[pack_1,1]
+					self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[short_d[0]] = [pack_1, 1]
 					self.EPG_HEADER2_description_count += 1
 				else:
 					#increment_event(short_d[0])
@@ -1234,67 +1264,67 @@ class epgdat_class:
 				for desc in long_d:
 					#if not epg_event_description_dict.has_key(long_d[i][0]):
 					#if not exist_event(long_d[i][0]) :
-					if not self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.has_key(desc[0]) :
+					if not self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.has_key(desc[0]):
 						# DESCRIPTION DATA
-						pack_1 = s_BB.pack(0x4e,len(desc[1])) + desc[1]
+						pack_1 = s_BB.pack(0x4e, len(desc[1])) + desc[1]
 						self.EPG_HEADER2_description_count += 1
 						# DESCRIPTION HEADER (2 int) will be computed at the end just before EPG.DAT write
 						# because it need the total number of the same description called by different channel section
 						#save_event(long_d[i][0],[pack_1,1])
-						self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[desc[0]]=[pack_1,1]
+						self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[desc[0]] = [pack_1, 1]
 					else:
 						#increment_event(long_d[i][0])
 						self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[desc[0]][1] += 1
 				# **** (2) : have REF DESC and now can create EVENT HEADER / DATA ****
 				# EVENT HEADER (2 bytes: 0x01 , 10 bytes + number of CRC32 * 4)
-				pack_1=s_BB.pack(0x01,0x0a + EPG_EVENT_HEADER_datasize )
+				pack_1 = s_BB.pack(0x01, 0x0a + EPG_EVENT_HEADER_datasize)
 				self.EPG_TMP_FD.write(pack_1)
 				# extract date and time from <event>
 				# unix format (second since 1970) and already GMT corrected
-				event_time_HMS=datetime.utcfromtimestamp(event[0])
-				event_length_HMS=datetime.utcfromtimestamp(event[1])
+				event_time_HMS = datetime.utcfromtimestamp(event[0])
+				event_length_HMS = datetime.utcfromtimestamp(event[1])
 				# epg.dat date is = (proleptic date - epg_zero_day)
-				dvb_date = event_time_HMS.toordinal() - self.EPG_PROLEPTIC_ZERO_DAY            
+				dvb_date = event_time_HMS.toordinal() - self.EPG_PROLEPTIC_ZERO_DAY
 				# EVENT DATA
 				# simply create an incremental ID,  starting from '1'
 				# event_id appears to be per channel, so this should be okay.
 				EPG_EVENT_DATA_id += 1
-				pack_1 = self.s_b_HH.pack(EPG_EVENT_DATA_id,dvb_date) # ID and DATE , always in BIG_ENDIAN
+				pack_1 = self.s_b_HH.pack(EPG_EVENT_DATA_id, dvb_date) # ID and DATE , always in BIG_ENDIAN
 				pack_2 = s_BBB.pack(*TL_hexconv(event_time_HMS)) # START TIME
-				pack_3 = s_BBB.pack(*TL_hexconv(event_length_HMS)) # LENGTH 
-				pack_4 = s_I.pack(short_d[0]) # REF DESC short (title)            
+				pack_3 = s_BBB.pack(*TL_hexconv(event_length_HMS)) # LENGTH
+				pack_4 = s_I.pack(short_d[0]) # REF DESC short (title)
 				for d in long_d:
 					pack_4 += s_I.pack(d[0]) # REF DESC long
-				self.EPG_TMP_FD.write(pack_1+pack_2+pack_3+pack_4)
+				self.EPG_TMP_FD.write(pack_1 + pack_2 + pack_3 + pack_4)
 		# reset again event container
 		self.EPG_TOTAL_EVENTS += len(self.events)
-		self.events=[]
+		self.events = []
 
 	def final_process(self):
 		if self.EPG_TOTAL_EVENTS > 0:
 			self.EPG_TMP_FD.close()
-			epgdat_fd=open(self.EPGDAT_FILENAME,"wb")
+			epgdat_fd = open(self.EPGDAT_FILENAME, "wb")
 			# HEADER 1
-			pack_1=struct.pack(self.LB_ENDIAN+"I13sI",0x98765432,'ENIGMA_EPG_V7',self.EPG_HEADER1_channel_count)
+			pack_1 = struct.pack(self.LB_ENDIAN + "I13sI", 0x98765432, 'ENIGMA_EPG_V7', self.EPG_HEADER1_channel_count)
 			epgdat_fd.write(pack_1)
 			# write first EPG.DAT section
-			EPG_TMP_FD=open(self.EPGDAT_TMP_FILENAME,"rb")
+			EPG_TMP_FD = open(self.EPGDAT_TMP_FILENAME, "rb")
 			while True:
-				pack_1=EPG_TMP_FD.read(4096)
+				pack_1 = EPG_TMP_FD.read(4096)
 				if not pack_1:
 					break
 				epgdat_fd.write(pack_1)
 			EPG_TMP_FD.close()
 			# HEADER 2
-			s_ii = self.s_II     
-			pack_1=self.s_I.pack(self.EPG_HEADER2_description_count)
+			s_ii = self.s_II
+			pack_1 = self.s_I.pack(self.EPG_HEADER2_description_count)
 			epgdat_fd.write(pack_1)
 			# event MUST BE WRITTEN IN ASCENDING ORDERED using HASH CODE as index
-			for temp in sorted(self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.keys()) :
-				pack_2=self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[temp]
+			for temp in sorted(self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER.keys()):
+				pack_2 = self.EPGDAT_HASH_EVENT_MEMORY_CONTAINER[temp]
 				#pack_1=struct.pack(LB_ENDIAN+"II",int(temp,16),pack_2[1])
-				pack_1=s_ii.pack(temp,pack_2[1])
-				epgdat_fd.write(pack_1+pack_2[0])
+				pack_1 = s_ii.pack(temp, pack_2[1])
+				epgdat_fd.write(pack_1 + pack_2[0])
 			epgdat_fd.close()
 		# *** cleanup **
 		if os.path.exists(self.EPGDAT_TMP_FILENAME):
@@ -1314,7 +1344,7 @@ class AutoStartTimer:
 		self.oldinterval = 0
 		self.firstPeriodicEPGCopy = 1
 		self.session = session
-		self.timer = enigma.eTimer() 
+		self.timer = enigma.eTimer()
 		self.timer.callback.append(self.onTimer)
 		self.update()
 
@@ -1360,7 +1390,7 @@ class AutoStartTimer:
 			if wakeTime == -1 or self.periodictime < wakeTime:
 				wakeTime = self.periodictime
 				scheduledOperation = "PERIODIC"
-				
+
 		if config.plugins.buyukbangpanel.scheduledoperation.value != "0":
 			scheduledoperationtimevalue = config.plugins.buyukbangpanel.scheduledoperationtime.value
 			self.scheduledoperationtime = int(time.mktime((now.tm_year, now.tm_mon, now.tm_mday, scheduledoperationtimevalue[0], scheduledoperationtimevalue[1], 0, 0, now.tm_yday, now.tm_isdst)))
@@ -1373,7 +1403,7 @@ class AutoStartTimer:
 			and config.plugins.buyukbangpanel.scheduledoperationthu.value == False \
 			and config.plugins.buyukbangpanel.scheduledoperationfri.value == False \
 			and config.plugins.buyukbangpanel.scheduledoperationsat.value == False \
-			and config.plugins.buyukbangpanel.scheduledoperationwed.value == False :
+			and config.plugins.buyukbangpanel.scheduledoperationwed.value == False:
 				dayFound = 2
 				print>>log, _("No weekday selected, scheduled operation is disabled")
 			while (dayFound == 0):
@@ -1433,7 +1463,7 @@ class AutoStartTimer:
 			#Invalid clock fix starts (for scheduled epg copy and scheduled operations)
 			if now < 1300000000 and next > 420 and (not config.plugins.buyukbangpanel.periodic.value or self.firstPeriodicEPGCopy == 0) and (config.plugins.buyukbangpanel.scheduled.value or config.plugins.buyukbangpanel.scheduledoperation.value != "0"):
 				# If calculated next wake time is smaller than 7 minutes than replace it with 3 minutes 1970 time check
-				next=180
+				next = 180
 				scheduledOperation = "CHECKCORRECTTIME"
 			#Invalid clock fix ends
 			self.timer.startLongTimer(next)
@@ -1448,7 +1478,7 @@ class AutoStartTimer:
 		elif scheduledOperation == "CHECKCORRECTTIME":
 			self.update()
 		elif twisted.python.runtime.platform.supportsThreads():
-			threads.deferToThread(self.copyEpg,self).addCallback(lambda ignore: self.afterCopyEPG())
+			threads.deferToThread(self.copyEpg, self).addCallback(lambda ignore: self.afterCopyEPG())
 		else:
 			self.copyEpg(self)
 			self.afterCopyEPG()
@@ -1468,7 +1498,7 @@ class AutoStartTimer:
 		if reboot:
 			config.plugins.buyukbangpanel.lastcopyepgrestarttime.setValue(int(time.time()))
 			config.plugins.buyukbangpanel.lastcopyepgrestarttime.save()
-			restartConfirmation = self.session.openWithCallback(self.restartEnigma,MessageBox,_("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout = 15, default = True)
+			restartConfirmation = self.session.openWithCallback(self.restartEnigma, MessageBox, _("Buyukbang Panel\n\nRestart needed to load the EPG data.\n\nDo you want to restart now?"), MessageBox.TYPE_YESNO, timeout=15, default=True)
 			restartConfirmation.setTitle(_("Restart now?"))
 		nowt = time.time()
 		if time.time() - 3600 < self.scheduledoperationtime < time.time() + 60:
@@ -1486,6 +1516,8 @@ class AutoStartTimer:
 			self.session.open(TryQuitMainloop, int(config.plugins.buyukbangpanel.restarttype.value))
 
 ###################################### PLUGIN MAIN FUNCTIONS ###################################
+
+
 def autostart(reason, session=None, **kwargs):
 	"called with reason=1 to during shutdown, with reason=0 at startup?"
 	global autoStartTimer
@@ -1533,7 +1565,7 @@ def autostart(reason, session=None, **kwargs):
 				if os.path.exists('/usr/share/enigma2/encoding.conf'):
 					mtime = os.path.getmtime('/usr/share/enigma2/encoding.conf')
 				if not os.path.exists('/usr/share/enigma2/encoding.conf_BuyukbangPanelBackup') or not mtime or (mtime + 86400 < now):
-					os.system('T=/usr/share/enigma2/encoding.conf && touch $T && (! grep -q "### BUYUKBANG PANEL ENCODING FIX ###" $T || [ ! -s $T"_BuyukbangPanelBackup" ]) && cp $T $T"_BuyukbangPanelBackup" && echo "" >> $T && echo "### BUYUKBANG PANEL ENCODING FIX ###" >> $T; nohup wget -qO- "http://en.kingofsat.net/find2.php?cl=' + config.plugins.buyukbangpanel.fixepgencoding.value +'&ordre=freq" | grep ">NID:.*>TID:" | while read line ; do TSID="$(echo "$line" | cut -d":" -f3 | cut -d"<" -f1)"; ONID="$(echo "$line" | cut -d":" -f2 | cut -d"<" -f1)"; [ "$(echo $TSID | awk "/^[0-9]+$/")" != "" ] && [ "$(echo $ONID | awk "/^[0-9]+$/")" != "" ] && ELINE="$TSID $ONID ' + config.plugins.buyukbangpanel.epgencoding.value + '" && ! grep -q "$ELINE" $T && echo "$ELINE" >> $T; done &')
+					os.system('T=/usr/share/enigma2/encoding.conf && touch $T && (! grep -q "### BUYUKBANG PANEL ENCODING FIX ###" $T || [ ! -s $T"_BuyukbangPanelBackup" ]) && cp $T $T"_BuyukbangPanelBackup" && echo "" >> $T && echo "### BUYUKBANG PANEL ENCODING FIX ###" >> $T; nohup wget -qO- "http://en.kingofsat.net/find2.php?cl=' + config.plugins.buyukbangpanel.fixepgencoding.value + '&ordre=freq" | grep ">NID:.*>TID:" | while read line ; do TSID="$(echo "$line" | cut -d":" -f3 | cut -d"<" -f1)"; ONID="$(echo "$line" | cut -d":" -f2 | cut -d"<" -f1)"; [ "$(echo $TSID | awk "/^[0-9]+$/")" != "" ] && [ "$(echo $ONID | awk "/^[0-9]+$/")" != "" ] && ELINE="$TSID $ONID ' + config.plugins.buyukbangpanel.epgencoding.value + '" && ! grep -q "$ELINE" $T && echo "$ELINE" >> $T; done &')
 			except Exception, e:
 				print>>log, _("Fixing EPG encoding failed")
 				print>>log, e
@@ -1550,8 +1582,11 @@ def autostart(reason, session=None, **kwargs):
 		print>>log, _("Stop")
 
 # we need this helper function to identify the descriptor
+
+
 def extensionsmenu(session, **kwargs):
 	main(session, **kwargs)
+
 
 def housekeepingExtensionsmenu(el):
 	try:
@@ -1563,27 +1598,29 @@ def housekeepingExtensionsmenu(el):
 		print>>log, _("Failed to update extensions menu")
 		print>>log, e
 
+
 description = _("Miscellaneous tools for Enigma2")
-config.plugins.buyukbangpanel.showinextensions.addNotifier(housekeepingExtensionsmenu, initial_call = False, immediate_feedback = False)
-extDescriptor = PluginDescriptor(name="Buyukbang Panel", description = description, where = PluginDescriptor.WHERE_EXTENSIONSMENU, fnc = extensionsmenu)
+config.plugins.buyukbangpanel.showinextensions.addNotifier(housekeepingExtensionsmenu, initial_call=False, immediate_feedback=False)
+extDescriptor = PluginDescriptor(name="Buyukbang Panel", description=description, where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=extensionsmenu)
+
 
 def Plugins(**kwargs):
 	result = [
 		PluginDescriptor(
 			name="Buyukbang Panel",
-			description = description,
-			where = [
+			description=description,
+			where=[
 				PluginDescriptor.WHERE_AUTOSTART,
 				PluginDescriptor.WHERE_SESSIONSTART
 			],
-			fnc = autostart,
+			fnc=autostart,
 		),
 		PluginDescriptor(
 			name="Buyukbang Panel",
-			description = description,
-			where = PluginDescriptor.WHERE_PLUGINMENU,
-			icon = 'plugin.png',
-			fnc = main
+			description=description,
+			where=PluginDescriptor.WHERE_PLUGINMENU,
+			icon='plugin.png',
+			fnc=main
 		),
 	]
 	if config.plugins.buyukbangpanel.showinextensions.value:
