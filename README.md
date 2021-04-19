@@ -14,6 +14,7 @@ Supported STB's:
 - Other boxes using Enigma2...
 
 Version History:
+
 v1.4.1:
 - Bug fix: Exception occurs during Copy EPG process on some images including Blackhole.
 
